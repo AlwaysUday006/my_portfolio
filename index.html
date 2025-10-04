@@ -10,7 +10,12 @@
   <header>
     <nav>
       <h2 class="logo">Uday<span>Deore</span></h2>
-      <ul class="nav-links">
+      <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links" id="nav-menu">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -18,15 +23,13 @@
     </nav>
   </header>
 
-  ...
   <section class="hero">
     <h1>👋 Hi, I'm <span id="typed-text"></span></h1>
     <p>A B.Tech student exploring Python & AI projects 🚀</p>
     <a href="#projects" class="btn">View My Work</a>
   </section>
-...
 
-   <section id="about" class="section">
+  <section id="about" class="section hidden"> 
     <h2>🧑‍💻 About Me</h2>
     <p>
       I’m Uday Deore, a **B.Tech student** currently in my second year. I have a strong interest in **Python programming** and **AI-related projects**.
@@ -37,11 +40,11 @@
     <p>
       I believe in continuous learning and sharing my work through GitHub and my portfolio website. 🚀
     </p>
-    </section>
+  </section>
 
-  <section id="projects" class="section">
+  <section id="projects" class="section"> 
     <h2>✨ Projects</h2>
-    <div class="project-card">
+    <div class="project-card hidden">
       <h3>🔐 Vigenère Cipher Tool</h3>
       <p>A Python-based encryption tool to encode and decode text.</p>
       <div class="project-links">
@@ -50,7 +53,7 @@
       </div>
     </div>
     
-    <div class="project-card">
+    <div class="project-card hidden">
       <h3>💳 Luhn Algorithm Validator</h3>
       <p>A Python script to validate credit card numbers and identification numbers.</p>
       <div class="project-links">
@@ -59,7 +62,7 @@
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card hidden">
       <h3>💰 Expense Tracker</h3>
       <p>Track daily expenses with a Python CLI app.</p>
       <div class="project-links">
@@ -67,9 +70,18 @@
         <a href="https://github.com/your-username/expense_tracker" target="_blank" class="project-btn github-btn">View on GitHub</a>
       </div>
     </div>
+    
+    <div class="project-card hidden">
+      <h3>📝 PascalCase / camelCase to snake\_case Converter</h3>
+      <p>A Python utility that converts PascalCase or camelCase strings into snake_case format.</p>
+      <div class="project-links">
+        <a href="https://alwaysuday006-pascalcase-to-snake-case-converter-app-zyccqn.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a>
+        <a href="https://github.com/AlwaysUday006/PascalCase-to-snake_case-Converter.git" target="_blank" class="project-btn github-btn">View on GitHub</a>
+      </div>
+    </div>
   </section>
 
-  <section id="contact" class="section">
+  <section id="contact" class="section hidden"> 
     <h2>📧 Contact Me</h2>
     <p>Email: <a href="mailto:udaydeore006@gmail.com">udaydeore006@gmail.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/uday-deore-5949bb32a" target="_blank">in/uday-deore-5949bb32a</a></p>
