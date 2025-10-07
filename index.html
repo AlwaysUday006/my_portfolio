@@ -15,6 +15,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="lightbox-overlay">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-image" src="" alt="Zoomed Certificate">
+  </div>
   <header>
     <nav>
       <h2 class="logo">Uday<span>Deore</span></h2>
@@ -53,17 +57,18 @@
 
   <section id="certs" class="section hidden">
     <h2>🏆 Certifications</h2>
-    <div class="project-card hidden">
-      <!-- <h3>Python for Data Science</h3>
-      <p>Issued by IBM via Coursera. Covered data analysis, Pandas, and NumPy.</p> -->
-      <a href="[Your Verification Link 1]" target="_blank" class="project-btn demo-btn">View Credential</a>
+    
+    <div class="certs-horizontal-container"> 
+        
+        <div class="cert-item hidden">
+            <img src="[Your-New-C-Cert-Image-URL]" alt="Programming in C Certificate" class="cert-image" data-full-img="[Your-New-C-Cert-Image-URL]">
+            <h3>Programming in C</h3>
+            <p>Issued by **Infosys | Springboard** (June 12, 2025). Covered core C programming principles.</p>
+            <a href="https://drive.google.com/file/d/1JdJEtRkMWYGpx726pPpZYuC95dFfJG4y/view?usp=sharing" target="_blank">View Credential</a>
+        </div>
     </div>
-    <div class="project-card hidden">
-      <!-- <h3>Fundamentals of Deep Learning</h3>
-      <p>Issued by NVIDIA. Focused on neural networks and GPU acceleration.</p> -->
-      <a href="[Your Verification Link 2]" target="_blank" class="project-btn demo-btn">View Credential</a>
-    </div>
-    </section>
+  </section>
+  
   <section id="projects" class="section"> 
     <h2>✨ Projects</h2>
     <div class="project-card hidden">
