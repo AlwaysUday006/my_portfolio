@@ -209,7 +209,7 @@ nav {
     background: var(--card-bg); 
     padding: 15px;
     border-radius: 10px;
-    border-left: 5px solid var(--secondary-color); 
+    border-left: 5px solid var(--secondary-color); /* Gold/Amber accent line */
     text-align: center; /* Center content */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s ease;
@@ -322,14 +322,30 @@ nav {
 }
 
 /* --- PROJECTS SECTION --- */
+
+/* **NEW: Grid Container Styles for desktop layout** */
+.projects-grid-container {
+    display: grid;
+    /* Two equal columns for desktop */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px; 
+    max-width: 1200px;
+    margin: 40px auto; /* Centers the whole grid */
+    padding: 0 20px;
+}
+
 .project-card {
   background: var(--card-bg); /* Darker Card Navy */
-  margin: 25px auto;
+  /* Margin auto removed, spacing handled by grid gap */
   padding: 30px;
-  max-width: 550px;
+  max-width: 100%; /* Allows card to fill grid column */
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Ensures buttons push to the bottom */
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-card:hover {
@@ -346,7 +362,7 @@ nav {
     color: var(--text-color);
 }
 
-/* Project Links/Buttons */
+/* Project Links/Buttons (rest remains the same) */
 .project-links {
   margin-top: 20px;
   display: flex;
@@ -415,9 +431,9 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* --- MOBILE MENU STYLES (Use dark background and orange accents) --- */
+/* --- MOBILE MENU AND RESPONSIVE STYLES --- */
 
-/* Hamburger Icon Styling */
+/* Hamburger Icon Styling (unchanged) */
 .hamburger {
   display: none; 
   background: none;
@@ -437,7 +453,6 @@ footer {
   border-radius: 2px;
 }
 
-/* Styles for when the menu is active (creates the 'X' icon) */
 .hamburger.active .bar:nth-child(2) {
   opacity: 0;
 }
@@ -462,6 +477,12 @@ footer {
   /* Show the hamburger icon on mobile */
   .hamburger {
     display: block;
+  }
+
+  /* Projects Grid reverts to a single column on mobile */
+  .projects-grid-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
   }
 
   /* Style the navigation links for mobile */
