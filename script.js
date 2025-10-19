@@ -206,9 +206,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Combine Scroll Event Handlers with requestAnimationFrame Throttling ---
   let ticking = false;
+  const headerEl = document.querySelector('header');
   function handleScrollRAF() {
     updateScrollProgress();
     toggleBackToTopButton();
+    if (headerEl) {
+      if (window.scrollY > 30) {
+        headerEl.classList.add('scrolled');
+      } else {
+        headerEl.classList.remove('scrolled');
+      }
+    }
     ticking = false;
   }
   window.addEventListener('scroll', () => {
@@ -220,4 +228,71 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set initial state after scroll listener is attached
   updateScrollProgress();
   toggleBackToTopButton();
+  if (headerEl) {
+    if (window.scrollY > 30) {
+      headerEl.classList.add('scrolled');
+    } else {
+      headerEl.classList.remove('scrolled');
+    }
+  }
+
+
+  // --- Start Custom Cursor Logic ---
+  (function() {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+    const customCursor = document.createElement('div');
+    customCursor.className = 'custom-cursor';
+    document.body.appendChild(customCursor);
+    document.body.classList.add('custom-cursor-active');
+    const trailLength = 8;
+    const cursorTrail = [];
+    for (let i = 0; i < trailLength; i++) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      document.body.appendChild(trail);
+      cursorTrail.push(trail);
+    }
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let cursorX = mouseX, cursorY = mouseY;
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      customCursor.style.opacity = '1';
+      cursorTrail.forEach(t => t.style.opacity = '0.6');
+    });
+    document.addEventListener('mouseleave', () => {
+      customCursor.style.opacity = '0';
+      cursorTrail.forEach(t => t.style.opacity = '0');
+    });
+    document.addEventListener('mouseenter', () => {
+      customCursor.style.opacity = '1';
+      cursorTrail.forEach(t => t.style.opacity = '0.6');
+    });
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      customCursor.style.left = cursorX + 'px';
+      customCursor.style.top = cursorY + 'px';
+      let prevX = cursorX, prevY = cursorY;
+      for (let i = 0; i < trailLength; i++) {
+        const t = cursorTrail[i];
+        prevX += (mouseX - prevX) * (0.15 + i * 0.04);
+        prevY += (mouseY - prevY) * (0.15 + i * 0.04);
+        t.style.left = prevX + 'px';
+        t.style.top = prevY + 'px';
+        t.style.opacity = (0.6 - i * 0.07).toString();
+      }
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    // Hover/click state
+  const interactive = document.querySelectorAll('a, button, .project-card, .cert-item, .skill-card, .social-icon');
+    interactive.forEach(el => {
+      el.addEventListener('mouseenter', () => customCursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => customCursor.classList.remove('cursor-hover'));
+    });
+    document.addEventListener('mousedown', () => customCursor.classList.add('cursor-click'));
+    document.addEventListener('mouseup', () => customCursor.classList.remove('cursor-click'));
+  })();
+  // --- End Custom Cursor Logic ---
 });
