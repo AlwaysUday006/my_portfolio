@@ -101,7 +101,10 @@ nav {
   text-align: center;
   padding: 120px 20px;
   /* Deep navy gradient */
-  background: linear-gradient(135deg, var(--dark-bg) 0%, #001020 100%);
+  /* Animated gradient background */
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #001020 50%, var(--light-bg) 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease-in-out infinite;
   color: white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
@@ -138,6 +141,147 @@ nav {
   50% { border-color: var(--secondary-color); }
 }
 
+/* Reveal animations for Intersection Observer (placed after blink-cursor) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated gradient background shift */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Profile image container and styles */
+.hero-profile {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid var(--primary-color);
+  box-shadow: 0 0 20px var(--accent-shadow), 0 0 40px rgba(255, 152, 0, 0.3);
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+.profile-img:hover {
+  /* Compose with float animation by including translateY; hover overrides animation while active */
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 0 30px var(--accent-shadow), 0 0 60px rgba(255, 152, 0, 0.45);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Optional rotating conic-gradient border behind profile image */
+.hero-profile::before {
+  content: '';
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  top: -15px;
+  left: calc(50% - 115px);
+  background: conic-gradient(from 0deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+  z-index: 0;
+  filter: blur(10px);
+  opacity: 0.6;
+  animation: rotate 4s linear infinite;
+}
+
+.hero-profile img { position: relative; z-index: 1; }
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Social links under CTA */
+.social-links {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 152, 0, 0.08);
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  color: var(--primary-color);
+  font-size: 24px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon:hover {
+  background: var(--primary-color);
+  color: var(--dark-bg);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 6px 15px var(--accent-shadow);
+}
+
+/* Initial hidden state - elements remain in flow (no display:none) */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  /* No transition on opacity/transform here to avoid conflicts with hover transitions;
+     reveal is handled via the .visible animation added by JS */
+}
+
+/* Visible state triggered by Intersection Observer - animation based reveal */
+.visible {
+  opacity: 1; /* ensure final state */
+  transform: translateY(0);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Staggered delays scoped to the visible state so hover interactions are not delayed after reveal */
+.visible.stagger-1 { animation-delay: 0.1s; }
+.visible.stagger-2 { animation-delay: 0.2s; }
+.visible.stagger-3 { animation-delay: 0.3s; }
+.visible.stagger-4 { animation-delay: 0.4s; }
+.visible.stagger-5 { animation-delay: 0.5s; }
+
+/* Ensure common revealed elements keep the reveal animation and are not overridden by other rules */
+section.hidden,
+.project-card.hidden,
+.cert-item.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+section.visible,
+.project-card.visible,
+.cert-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
 .btn {
   display: inline-block;
   margin-top: 30px;
@@ -168,21 +312,94 @@ nav {
   background: var(--light-bg);
 }
 
-/* Alternating Section Backgrounds (used two shades of Navy) */
-#about {
-    background: var(--dark-bg); /* Deep Navy */
+/* Alternating Section Backgrounds */
+.section:nth-of-type(odd) { background: var(--dark-bg); }   /* Dark */
+.section:nth-of-type(even) { background: var(--light-bg); } /* Light */
+
+/* Skills container layout */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-#certs {
-    background: var(--light-bg); /* Medium Navy */
+.skill-card {
+    background: var(--card-bg);
+    padding: 30px 25px;
+    border-radius: 15px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-#projects {
-    background: var(--dark-bg); /* Deep Navy */
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--accent-shadow);
 }
 
-#contact {
-    background: var(--light-bg); /* Medium Navy */
+.skill-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.skill-name {
+    color: var(--secondary-color);
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+    width: 0%;
+    transition: width 1.5s ease-out;
+    box-shadow: 0 0 10px var(--accent-shadow);
+    position: relative;
+}
+
+/* Shimmer effect for progress bar */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.progress-percentage {
+    font-size: 0.9em;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 8px;
+    display: block;
 }
 
 /* --- CERTIFICATIONS SECTION (NEW Horizontal Style) --- */
@@ -280,7 +497,7 @@ nav {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
-    z-index: 9999;
+    z-index: 10050;
     align-items: center;
     justify-content: center;
     opacity: 0;
@@ -341,6 +558,9 @@ nav {
   max-width: 100%; /* Allows card to fill grid column */
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+  perspective: 1000px;
+  overflow: hidden;
+  transform-style: preserve-3d;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   /* Ensures buttons push to the bottom */
   display: flex; 
@@ -349,7 +569,7 @@ nav {
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
+  transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) translateY(-8px);
   /* Orange shadow on hover */
   box-shadow: 0 12px 25px var(--accent-shadow); 
 }
@@ -363,6 +583,91 @@ nav {
 }
 
 /* Project Links/Buttons (rest remains the same) */
+.project-image-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background: var(--dark-bg);
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.1);
+  filter: brightness(0.7);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 31, 63, 0.7) 50%, rgba(0, 31, 63, 0.95) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.overlay-title {
+  color: var(--primary-color);
+  font-size: 1.8em;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  padding: 0 20px;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .overlay-title {
+  transform: translateY(0);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+  justify-content: center;
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 152, 0, 0.15);
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  color: var(--secondary-color);
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+}
+
+.tech-tag:hover {
+  background: var(--primary-color);
+  color: var(--dark-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--accent-shadow);
+}
+
 .project-links {
   margin-top: 20px;
   display: flex;
@@ -479,10 +784,77 @@ footer {
     display: block;
   }
 
+  /* Skills section mobile adjustments */
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .skill-card {
+    padding: 25px 20px;
+  }
+
+  .skill-icon {
+    font-size: 40px;
+  }
+
   /* Projects Grid reverts to a single column on mobile */
   .projects-grid-container {
       grid-template-columns: 1fr;
       gap: 20px;
+  }
+
+  /* Disable 3D tilt on mobile */
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Adjust image container height */
+  .project-image-container {
+    height: 200px;
+  }
+
+  /* Make overlay always visible on mobile */
+  .project-overlay {
+    opacity: 0.9;
+  }
+
+  /* Adjust overlay title size */
+  .overlay-title {
+    font-size: 1.4em;
+  }
+
+  /* Adjust tech tags */
+  .tech-tag {
+    font-size: 0.8em;
+    padding: 5px 12px;
+  }
+
+  /* Reduce image zoom */
+  .project-card:hover .project-image {
+    transform: scale(1.05);
+  }
+
+  /* Responsive hero/profile adjustments */
+  .hero {
+    padding: 80px 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .social-links { gap: 15px; }
+
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
   }
 
   /* Style the navigation links for mobile */
@@ -498,11 +870,13 @@ footer {
     transition: transform 0.3s ease-in-out;
     text-align: center;
     padding-top: 20px;
+    z-index: 2000;
   }
 
   /* Class to display the menu */
   .nav-links.active {
     transform: translateX(0);
+    z-index: 10001;
   }
 
   .nav-links li {
@@ -515,4 +889,139 @@ footer {
     padding: 10px 20px; 
     border: 1px solid var(--primary-color); /* Orange border on mobile menu items */
   }
+
+  /* Back to Top Button */
+  #back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    z-index: 9990;
+  }
+
+  /* Scroll Progress Bar */
+  #scroll-progress-bar {
+    height: 3px;
+  }
+
+  /* Loading Spinner */
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border-width: 5px;
+  }
+
+  .loading-text {
+    font-size: 1em;
+  }
+}
+
+body.menu-open #back-to-top {
+  display: none;
+}
+
+/* Scroll Progress Bar */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  width: 0%;
+  z-index: 10000;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 2px 8px var(--accent-shadow);
+  transform-origin: left;
+}
+
+/* Back to Top Button */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  color: var(--dark-bg);
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--accent-shadow);
+  transition: all 0.3s ease;
+  z-index: 9990;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+#back-to-top:hover {
+  background: var(--dark-bg);
+  color: var(--primary-color);
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 6px 20px var(--accent-shadow);
+}
+#back-to-top:active {
+  transform: scale(0.95);
+}
+#back-to-top:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* Loading Spinner Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--dark-bg);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  opacity: 1;
+  visibility: visible;
+}
+.loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.spinner-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255, 152, 0, 0.2);
+  border-top: 6px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.loading-text {
+  color: var(--primary-color);
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }

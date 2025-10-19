@@ -15,6 +15,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="loading-spinner" class="loading-overlay">
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p class="loading-text">Loading...</p>
+    </div>
+  </div>
+  <div id="scroll-progress-bar"></div>
   <div id="lightbox-overlay">
     <span id="lightbox-close">&times;</span>
     <img id="lightbox-image" src="" alt="Zoomed Certificate">
@@ -29,6 +36,7 @@
       </button>
       <ul class="nav-links" id="nav-menu">
         <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#certs">Certifications</a></li> 
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -37,9 +45,17 @@
   </header>
 
   <section class="hero">
+    <div class="hero-profile">
+      <img src="https://via.placeholder.com/200" alt="Uday Deore Profile Picture" class="profile-img">
+    </div>
     <h1>👋 Hi, I'm <span id="typed-text"></span></h1>
     <p>A B.Tech student exploring Python & AI projects 🚀</p>
     <a href="#projects" class="btn">View My Work</a>
+    <div class="social-links">
+      <a href="https://github.com/AlwaysUday006" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub Profile">🔗</a>
+      <a href="https://www.linkedin.com/in/uday-deore-5949bb32a" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn Profile">💼</a>
+      <a href="mailto:udaydeore006@gmail.com" class="social-icon" aria-label="Email Contact">📧</a>
+    </div>
   </section>
 
   <section id="about" class="section hidden"> 
@@ -53,6 +69,68 @@
     <p>
       I believe in continuous learning and sharing my work through GitHub and my portfolio website. 🚀
     </p>
+  </section>
+
+  <section id="skills" class="section hidden">
+    <h2>🛠️ Skills & Expertise</h2>
+    <p>Technologies and tools I work with</p>
+    <div class="skills-container">
+
+      <div class="skill-card hidden">
+        <div class="skill-icon">🐍</div>
+        <h3 class="skill-name">Python Programming</h3>
+        <div class="progress-bar-container">
+          <div class="progress-bar" data-progress="90"></div>
+        </div>
+        <span class="progress-percentage">0%</span>
+      </div>
+
+      <div class="skill-card hidden">
+        <div class="skill-icon">🤖</div>
+        <h3 class="skill-name">AI & Machine Learning</h3>
+        <div class="progress-bar-container">
+          <div class="progress-bar" data-progress="75"></div>
+        </div>
+        <span class="progress-percentage">0%</span>
+      </div>
+
+      <div class="skill-card hidden">
+        <div class="skill-icon">🌐</div>
+        <h3 class="skill-name">Web Development</h3>
+        <div class="progress-bar-container">
+          <div class="progress-bar" data-progress="70"></div>
+        </div>
+        <span class="progress-percentage">0%</span>
+      </div>
+
+      <div class="skill-card hidden">
+        <div class="skill-icon">💾</div>
+        <h3 class="skill-name">Data Structures</h3>
+        <div class="progress-bar-container">
+          <div class="progress-bar" data-progress="80"></div>
+        </div>
+        <span class="progress-percentage">0%</span>
+      </div>
+
+      <div class="skill-card hidden">
+        <div class="skill-icon">🧠</div>
+        <h3 class="skill-name">Problem Solving</h3>
+        <div class="progress-bar-container">
+          <div class="progress-bar" data-progress="82"></div>
+        </div>
+        <span class="progress-percentage">0%</span>
+      </div>
+
+      <div class="skill-card hidden">
+        <div class="skill-icon">🗂️</div>
+        <h3 class="skill-name">Git & GitHub</h3>
+        <div class="progress-bar-container">
+          <div class="progress-bar" data-progress="75"></div>
+        </div>
+        <span class="progress-percentage">0%</span>
+      </div>
+
+    </div>
   </section>
 
   <section id="certs" class="section hidden">
@@ -75,8 +153,19 @@
     <div class="projects-grid-container">
 
         <div class="project-card hidden">
+          <div class="project-image-container">
+            <img src="https://via.placeholder.com/600x400/003366/ff9800?text=Cipher+Tool" alt="Vigenère Cipher Tool Screenshot" class="project-image">
+            <div class="project-overlay">
+              <span class="overlay-title">Vigenère Cipher Tool</span>
+            </div>
+          </div>
           <h3>🔐 Vigenère Cipher Tool</h3>
           <p>A Python-based encryption tool to encode and decode text.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Cryptography</span>
+          </div>
           <div class="project-links">
             <a href="https://alwaysuday006-cipher-project-app-uqhd8o.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a> 
             <a href="https://github.com/your-username/cipher_project" target="_blank" class="project-btn github-btn">View on GitHub</a>
@@ -84,8 +173,19 @@
         </div>
         
         <div class="project-card hidden">
+          <div class="project-image-container">
+            <img src="https://via.placeholder.com/600x400/003366/ff9800?text=Luhn+Validator" alt="Luhn Algorithm Validator Screenshot" class="project-image">
+            <div class="project-overlay">
+              <span class="overlay-title">Luhn Algorithm Validator</span>
+            </div>
+          </div>
           <h3>💳 Luhn Algorithm Validator</h3>
           <p>A Python script to validate credit card numbers and identification numbers.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Validation</span>
+          </div>
           <div class="project-links">
             <a href="https://alwaysuday006-luhn-algorithm-app-056.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a>
             <a href="https://github.com/your-username/luhn_validator_project" target="_blank" class="project-btn github-btn">View on GitHub</a>
@@ -93,8 +193,19 @@
         </div>
 
         <div class="project-card hidden">
+          <div class="project-image-container">
+            <img src="https://via.placeholder.com/600x400/003366/ff9800?text=Expense+Tracker" alt="Expense Tracker Screenshot" class="project-image">
+            <div class="project-overlay">
+              <span class="overlay-title">Expense Tracker</span>
+            </div>
+          </div>
           <h3>💰 Expense Tracker</h3>
           <p>Track daily expenses with a Python CLI app.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">CLI</span>
+          </div>
           <div class="project-links">
             <a href="https://alwaysuday006-expense-tracker-app-hxkusf.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a>
             <a href="https://github.com/your-username/expense_tracker" target="_blank" class="project-btn github-btn">View on GitHub</a>
@@ -102,8 +213,19 @@
         </div>
         
         <div class="project-card hidden">
+          <div class="project-image-container">
+            <img src="https://via.placeholder.com/600x400/003366/ff9800?text=Case+Converter" alt="Case Converter Screenshot" class="project-image">
+            <div class="project-overlay">
+              <span class="overlay-title">Case Converter</span>
+            </div>
+          </div>
           <h3>📝 PascalCase / camelCase to snake\_case Converter</h3>
           <p>A Python utility that converts PascalCase or camelCase strings into snake_case format.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">String Manipulation</span>
+          </div>
           <div class="project-links">
             <a href="https://alwaysuday006-pascalcase-to-snake-case-converter-app-zyccqn.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a>
             <a href="https://github.com/AlwaysUday006/PascalCase-to-snake_case-Converter.git" target="_blank" class="project-btn github-btn">View on GitHub</a>
@@ -111,8 +233,19 @@
         </div>
 
         <div class="project-card hidden">
+          <div class="project-image-container">
+            <img src="https://via.placeholder.com/600x400/003366/ff9800?text=Square+Root" alt="Square Root Finder Screenshot" class="project-image">
+            <div class="project-overlay">
+              <span class="overlay-title">Square Root Finder</span>
+            </div>
+          </div>
           <h3>🧮 Square Root Finder (Bisection Method)</h3>
           <p>A Python program that finds the square root of a number using the Bisection Method, a precise numerical approach that repeatedly halves an interval to approximate roots efficiently.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Algorithms</span>
+          </div>
           <div class="project-links">
             <a href="https://alwaysuday006-sqrt-by-bisection-app-o4nyqa.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a>
             <a href="https://github.com/AlwaysUday006/sqrt_by_bisection.git" target="_blank" class="project-btn github-btn">View on GitHub</a>
@@ -120,8 +253,19 @@
         </div>
 
         <div class="project-card hidden">
+          <div class="project-image-container">
+            <img src="https://via.placeholder.com/600x400/003366/ff9800?text=Arithmetic+Formatter" alt="Arithmetic Formatter Screenshot" class="project-image">
+            <div class="project-overlay">
+              <span class="overlay-title">Arithmetic Formatter</span>
+            </div>
+          </div>
           <h3>🧮 Arithmetic Formatter</h3>
           <p>A Python project that neatly arranges arithmetic problems vertically and side by side — optionally displaying answers.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Math</span>
+          </div>
           <div class="project-links">
             <a href="https://alwaysuday006-arithmetic-formatter-app-y3tbrj.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a>
             <a href="https://github.com/AlwaysUday006/arithmetic_formatter.git" target="_blank" class="project-btn github-btn">View on GitHub</a>
@@ -129,8 +273,19 @@
         </div>
         
         <div class="project-card hidden">
+          <div class="project-image-container">
+            <img src="https://via.placeholder.com/600x400/003366/ff9800?text=Password+Generator" alt="Password Generator Screenshot" class="project-image">
+            <div class="project-overlay">
+              <span class="overlay-title">Password Generator</span>
+            </div>
+          </div>
           <h3>🔐 Password Generator</h3>
           <p>A Python-based tool that generates strong, random, and customizable passwords for improved online security — available as both a CLI program and an interactive Streamlit web app.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Security</span>
+          </div>
           <div class="project-links">
             <a href="https://alwaysuday006-password-generator-app-uj6mmb.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a>
             <a href="https://github.com/AlwaysUday006/password_generator.git" target="_blank" class="project-btn github-btn">View on GitHub</a>
@@ -138,8 +293,20 @@
         </div>
 
         <div class="project-card hidden">
+          <div class="project-image-container">
+            <img src="https://via.placeholder.com/600x400/003366/ff9800?text=Graph+Algorithm" alt="Shortest Path Finder Screenshot" class="project-image">
+            <div class="project-overlay">
+              <span class="overlay-title">Shortest Path Finder</span>
+            </div>
+          </div>
           <h3>🧭 Custom Shortest Path Finder</h3>
-          <p>An interactive Python and Streamlit-based project that lets users build their own graph, visualize connections, and find the shortest path between nodes dynamically using Dijkstra’s algorithm — perfect for learning and exploring graph theory concepts.</p>
+          <p>An interactive Python and Streamlit-based project that lets users build their own graph, visualize connections, and find the shortest path between nodes dynamically using Dijkstra's algorithm — perfect for learning and exploring graph theory concepts.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Graph Theory</span>
+            <span class="tech-tag">Dijkstra</span>
+          </div>
           <div class="project-links">
             <a href="https://alwaysuday006-shortest-path-algorithm-app-xf0tpb.streamlit.app/" target="_blank" class="project-btn demo-btn">View Project</a>
             <a href="https://github.com/AlwaysUday006/shortest_path_algorithm.git" target="_blank" class="project-btn github-btn">View on GitHub</a>
@@ -158,7 +325,7 @@
   <footer>
     <p>© 2025 Uday Deore | All Rights Reserved</p>
   </footer>
-
+  <button id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
   <script src="script.js"></script>
 </body>
 </html>

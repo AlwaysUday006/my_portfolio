@@ -49,6 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (entry.isIntersecting) {
         // Add 'visible' class to trigger fade-in/slide-up
         entry.target.classList.add('visible');
+        // If the revealed element is a skill card, animate its progress bar
+        if (entry.target.classList && entry.target.classList.contains('skill-card')) {
+          animateProgressBar(entry.target);
+        }
         observer.unobserve(entry.target); 
       }
     });
@@ -61,6 +65,47 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.hidden').forEach((element) => {
     observer.observe(element);
   });
+
+  // Animate progress bars for skill cards
+  function animateProgressBar(skillCard) {
+    const progressBar = skillCard.querySelector('.progress-bar');
+    const percentageText = skillCard.querySelector('.progress-percentage');
+    if (!progressBar) return;
+    
+    // Parse and clamp progress value to 0-100 range
+    const rawProgress = parseInt(progressBar.getAttribute('data-progress'), 10) || 0;
+    const targetProgress = Math.min(100, Math.max(0, rawProgress));
+
+    // Small delay so the card reveal is noticeable first
+    setTimeout(() => {
+      progressBar.style.width = targetProgress + '%';
+      progressBar.classList.add('filled');
+      
+      // Handle percentage text animation
+      if (percentageText) {
+        // Always start from 0%
+        percentageText.textContent = '0%';
+        
+        // For 0% target, we're already done
+        if (targetProgress === 0) return;
+        
+        let current = 0;
+        const duration = 1500; // match the CSS transition duration
+        // Guard against division by zero and ensure reasonable step time
+        const stepTime = targetProgress > 0 ? Math.max(10, Math.floor(duration / targetProgress)) : 16;
+        
+        const interval = setInterval(() => {
+          current += 1;
+          percentageText.textContent = current + '%';
+          if (current >= targetProgress) {
+            clearInterval(interval);
+            // Ensure final value is exactly the target
+            percentageText.textContent = targetProgress + '%';
+          }
+        }, stepTime);
+      }
+    }, 250);
+  }
   // --- End Scroll Animation Logic ---
 
 
@@ -106,4 +151,73 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // --- End Lightbox/Zoom Logic ---
+
+
+  // --- Start Loading Spinner Logic ---
+  const loadingSpinner = document.getElementById('loading-spinner');
+  window.addEventListener('load', () => {
+    if (loadingSpinner) {
+      setTimeout(() => {
+        loadingSpinner.classList.add('hidden');
+        setTimeout(() => {
+          if (loadingSpinner.parentNode) {
+            loadingSpinner.parentNode.removeChild(loadingSpinner);
+          }
+        }, 500);
+      }, 500);
+    }
+  });
+  // --- End Loading Spinner Logic ---
+
+
+  // --- Start Scroll Progress Bar Logic ---
+  const scrollProgressBar = document.getElementById('scroll-progress-bar');
+  function updateScrollProgress() {
+    if (!scrollProgressBar) return;
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY;
+    let progress = 0;
+    if (scrollableHeight > 0) {
+      progress = (scrolled / scrollableHeight) * 100;
+      progress = Math.max(0, Math.min(progress, 100));
+    }
+    scrollProgressBar.style.width = progress + '%';
+  }
+  // --- End Scroll Progress Bar Logic ---
+
+
+  // --- Start Back to Top Button Logic ---
+  const backToTopBtn = document.getElementById('back-to-top');
+  function toggleBackToTopButton() {
+    if (!backToTopBtn) return;
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  }
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  // --- End Back to Top Button Logic ---
+
+
+  // --- Combine Scroll Event Handlers with requestAnimationFrame Throttling ---
+  let ticking = false;
+  function handleScrollRAF() {
+    updateScrollProgress();
+    toggleBackToTopButton();
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(handleScrollRAF);
+      ticking = true;
+    }
+  });
+  // Set initial state after scroll listener is attached
+  updateScrollProgress();
+  toggleBackToTopButton();
 });
