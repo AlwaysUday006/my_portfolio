@@ -29,8 +29,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#001f3f",
-  "background_color": "#001f3f",
+  "theme_color": "#0B1220",
+  "background_color": "#0B1220",
   "display": "standalone",
   "start_url": "/my_portfolio/",
   "scope": "/my_portfolio/",
