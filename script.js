@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     animateCursor();
     // Hover/click state
-  const interactive = document.querySelectorAll('a, button, .project-card, .cert-item, .skill-card, .social-icon');
+  const interactive = document.querySelectorAll('a, button, .cert-item, .skill-card, .social-icon');
     interactive.forEach(el => {
       el.addEventListener('mouseenter', () => customCursor.classList.add('cursor-hover'));
       el.addEventListener('mouseleave', () => customCursor.classList.remove('cursor-hover'));
