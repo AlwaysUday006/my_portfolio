@@ -622,6 +622,7 @@ section.visible,
   display: block;
   transition: transform 0.6s ease, filter 0.3s ease, opacity 0.8s ease, visibility 0.8s ease;
   will-change: transform, opacity;
+  cursor: pointer;
 }
 
 .project-overlay {
@@ -630,7 +631,14 @@ section.visible,
 
 /* Dramatic pop-out zoom for project images */
 .project-card:hover .project-image {
-  /* No transform by default to avoid cropping/overflow */
+  filter: brightness(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.project-image:focus {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 4px;
+  filter: brightness(1.05);
 }
 .enable-image-zoom .project-card:hover .project-image {
   transform: scale(1.08);
