@@ -122,11 +122,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Target the image elements within the certification section
   const certImages = document.querySelectorAll('.cert-image');
 
-  // Function to open the lightbox
+
+  // Track previous body overflow for restoration
+  let prevBodyOverflow = '';
+
+  // Function to open the lightbox for certificates
   certImages.forEach(img => {
     img.addEventListener('click', () => {
       const fullImgSrc = img.getAttribute('data-full-img');
       lightboxImage.src = fullImgSrc;
+      lightboxImage.alt = img.getAttribute('alt') || 'Zoomed image';
+      prevBodyOverflow = document.body.style.overflow;
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
     });
@@ -135,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to close the lightbox
   function closeLightbox() {
     lightbox.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Restore scrolling
+    document.body.style.overflow = prevBodyOverflow || '';
   }
 
   // Close when the 'X' is clicked
@@ -156,6 +162,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // --- End Lightbox/Zoom Logic ---
+
+  // --- Start Project Image Lightbox Logic ---
+  const projectImages = document.querySelectorAll('.project-image');
+  if (projectImages && projectImages.length && lightbox && lightboxImage) {
+    projectImages.forEach(img => {
+      img.addEventListener('click', () => {
+        const fullImgSrc = img.getAttribute('src');
+        lightboxImage.src = fullImgSrc;
+        lightboxImage.alt = img.getAttribute('alt') || 'Zoomed image';
+        prevBodyOverflow = document.body.style.overflow;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      img.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          img.click();
+        }
+      });
+    });
+  }
+  // --- End Project Image Lightbox Logic ---
 
   // --- Start Project Slideshow Logic ---
   function initProjectSlideshows() {
@@ -388,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     animateCursor();
     // Hover/click state
-  const interactive = document.querySelectorAll('a, button, .cert-item, .skill-card, .social-icon');
+    const interactive = document.querySelectorAll('a, button, .cert-item, .skill-card, .social-icon, .project-image');
     interactive.forEach(el => {
       el.addEventListener('mouseenter', () => customCursor.classList.add('cursor-hover'));
       el.addEventListener('mouseleave', () => customCursor.classList.remove('cursor-hover'));
