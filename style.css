@@ -618,18 +618,25 @@ section.visible,
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.6s ease, filter 0.3s ease, opacity 0.8s ease, visibility 0.8s ease;
   will-change: transform, opacity;
 }
 
+.project-overlay {
+  display: none !important;
+}
+
 /* Dramatic pop-out zoom for project images */
 .project-card:hover .project-image {
-  transform: scale(1.25) translateZ(50px);
+  /* No transform by default to avoid cropping/overflow */
+}
+.enable-image-zoom .project-card:hover .project-image {
+  transform: scale(1.08);
   z-index: 10;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-  filter: brightness(0.7);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  filter: brightness(0.95);
 }
 
 /* Slideshow container - stacks images absolutely */
@@ -641,10 +648,10 @@ section.visible,
 
 /* Allow zoomed images and shadows to overflow on desktop for pop-out effect */
 .project-image-container {
-  overflow: visible;
+  overflow: hidden;
 }
 .project-card {
-  overflow: visible;
+  overflow: hidden;
 }
 
 .project-images-slideshow .project-image {
@@ -721,40 +728,6 @@ section.visible,
 /* Also provide class-based override to globally disable hover zoom if needed */
 .no-hover .project-card:hover .project-image { transform: none !important; box-shadow: none !important; }
 
-.project-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, transparent 0%, rgba(15,23,42,0.5) 50%, rgba(15,23,42,0.75) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20; /* above images but below indicators */
-  pointer-events: none; /* allow clicks to pass through to indicators */
-}
-
-.project-card:hover .project-overlay {
-  opacity: 1;
-}
-
-.overlay-title {
-  color: #FFFFFF;
-  font-size: 1.8em;
-  font-weight: 700;
-  text-align: center;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-  padding: 0 20px;
-  transform: translateY(10px);
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover .overlay-title {
-  transform: translateY(0);
-}
 
 .tech-tags {
   display: flex;
