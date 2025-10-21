@@ -620,12 +620,89 @@ section.visible,
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease, filter 0.3s ease;
+  transition: transform 0.6s ease, filter 0.3s ease, opacity 0.8s ease, visibility 0.8s ease;
+  will-change: transform, opacity;
 }
 
+/* Dramatic pop-out zoom for project images */
 .project-card:hover .project-image {
-  transform: scale(1.1);
+  transform: scale(1.25) translateZ(50px);
+  z-index: 10;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   filter: brightness(0.7);
+}
+
+/* Slideshow container - stacks images absolutely */
+.project-images-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.project-images-slideshow .project-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 0;
+}
+
+/* Active image shown */
+.project-images-slideshow .project-image.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+/* Single image projects (no slideshow wrapper) */
+.project-image-container > .project-image {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Slideshow indicators */
+.slideshow-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+  padding: 6px 10px;
+  background: rgba(11, 18, 32, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+}
+
+.slideshow-indicators .indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(229, 231, 235, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slideshow-indicators .indicator.active {
+  background: var(--primary-color);
+  width: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px var(--accent-shadow);
+}
+
+.slideshow-indicators .indicator:hover {
+  background: rgba(229, 231, 235, 0.7);
+  transform: scale(1.2);
+}
+
+/* Slightly reduce zoom on mobile and make indicators touch-friendly */
+@media (max-width: 768px) {
+  .project-card:hover .project-image { transform: scale(1.15) translateZ(30px); }
+  .slideshow-indicators .indicator { width: 10px; height: 10px; }
+  .slideshow-indicators { gap: 10px; }
 }
 
 .project-overlay {
