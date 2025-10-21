@@ -210,12 +210,12 @@ footer { background: var(--light-bg); color: #A8B3C2; text-align:center; padding
   z-index: 0;
   filter: blur(10px);
   opacity: 0.6;
-  animation: rotate 4s linear infinite;
+  animation: heroRotate 4s linear infinite;
 }
 
 .hero-profile img { position: relative; z-index: 1; }
 
-@keyframes rotate {
+@keyframes heroRotate {
   to { transform: rotate(360deg); }
 }
 
@@ -572,7 +572,6 @@ section.visible,
   padding: 20px;
   max-width: 100%; /* Allows card to fill grid column */
   border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
   perspective: 1000px;
   overflow: hidden;
   transform-style: preserve-3d;
@@ -609,7 +608,7 @@ section.visible,
 .project-image-container {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 270px;
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -1090,5 +1089,12 @@ body.custom-cursor-active a, body.custom-cursor-active button { cursor: none; }
     width: 100%;
     padding: 12px 0;
     font-size: 1.1rem;
+  }
+  /* Mobile adjustments for project cards */
+  .project-card {
+    padding: 25px; /* slightly larger padding on mobile for touch comfort */
+  }
+  .project-image-container {
+    height: 230px; /* reduce image height for mobile to keep card proportions */
   }
 }
