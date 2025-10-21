@@ -569,7 +569,7 @@ section.visible,
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
   border: 1px solid rgba(251,146,60,0.12);
   background-image: linear-gradient(135deg, rgba(251,146,60,0.06) 0%, transparent 50%);
-  padding: 30px;
+  padding: 20px;
   max-width: 100%; /* Allows card to fill grid column */
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.5);
@@ -585,7 +585,10 @@ section.visible,
 
 .project-card:hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) translateY(-8px);
-  box-shadow: 0 12px 25px var(--accent-shadow); 
+  background: rgba(15, 30, 60, 0.4);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  box-shadow: 0 12px 25px var(--accent-shadow);
 }
 
 .project-card:focus-within {
@@ -844,23 +847,7 @@ body.custom-cursor-active a, body.custom-cursor-active button { cursor: none; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-.cert-item::after {
-  content: '';
-  position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border-radius: 15px;
-  z-index: 0;
-  opacity: 0;
-  filter: blur(8px);
-  background: conic-gradient(from 0deg, var(--secondary-color), transparent, var(--secondary-color));
-  animation: rotate 6s linear infinite;
-  pointer-events: none;
-}
-.cert-item:hover::after { opacity: 1; }
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* Removed spinning conic-gradient pseudo-element to reduce distraction on certificate cards */
 
 /* --- BUTTON RIPPLE EFFECT --- */
 .btn, .project-btn, .demo-btn, .github-btn {
