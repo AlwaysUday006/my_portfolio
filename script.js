@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setTimeout(type, newTextDelay); 
   // --- End Typing Effect Logic ---
+
+  // Disable hover effects on touch devices by adding a body class
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    document.body.classList.add('no-hover');
+  }
   
 
   // --- Start Mobile Menu Logic ---
@@ -208,6 +213,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // Indicator clicks
       if (indicators && indicators.length) {
         indicators.forEach((ind, i) => {
+          // Link indicator to image for aria-controls (if image id exists)
+          const img = images[i];
+          if (img && img.id) {
+            ind.setAttribute('aria-controls', img.id);
+          }
           ind.addEventListener('click', () => {
             stopSlideshow();
             showImage(i);

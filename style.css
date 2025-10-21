@@ -639,6 +639,14 @@ section.visible,
   height: 100%;
 }
 
+/* Allow zoomed images and shadows to overflow on desktop for pop-out effect */
+.project-image-container {
+  overflow: visible;
+}
+.project-card {
+  overflow: visible;
+}
+
 .project-images-slideshow .project-image {
   position: absolute;
   top: 0;
@@ -670,11 +678,12 @@ section.visible,
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 5;
+  z-index: 30; /* sit above zoomed image and overlay */
   padding: 6px 10px;
   background: rgba(11, 18, 32, 0.6);
   backdrop-filter: blur(8px);
   border-radius: 20px;
+  pointer-events: auto; /* ensure indicators are clickable */
 }
 
 .slideshow-indicators .indicator {
@@ -703,7 +712,14 @@ section.visible,
   .project-card:hover .project-image { transform: scale(1.15) translateZ(30px); }
   .slideshow-indicators .indicator { width: 10px; height: 10px; }
   .slideshow-indicators { gap: 10px; }
+  /* On mobile, disable overflow visible to avoid layout issues */
+  .project-image-container, .project-card { overflow: hidden; }
+  /* If user has a touch device, the .no-hover class will disable hover transform */
+  body.no-hover .project-card:hover .project-image { transform: none !important; box-shadow: none !important; }
 }
+
+/* Also provide class-based override to globally disable hover zoom if needed */
+.no-hover .project-card:hover .project-image { transform: none !important; box-shadow: none !important; }
 
 .project-overlay {
   position: absolute;
@@ -717,7 +733,8 @@ section.visible,
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 20; /* above images but below indicators */
+  pointer-events: none; /* allow clicks to pass through to indicators */
 }
 
 .project-card:hover .project-overlay {
