@@ -1,428 +1,125 @@
-// script.js (COMPLETE INTERACTIVITY LOGIC)
+const navLinks = document.querySelectorAll('.ul-list li a');
 
+const sections = document.querySelectorAll('section');
+function removeActive() {
+  navLinks.forEach(link => link.parentElement.classList.remove('active'));
+}
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+    window.scrollTo({
+      top: (targetSection ? targetSection.offsetTop : 0) - 80,
+      behavior: 'smooth'
+    });
+    removeActive();
+    link.parentElement.classList.add('active');
+  });
+});
+window.addEventListener('scroll', () => {
+  let scrollPos = window.scrollY + 100;
+  sections.forEach(section => {
+    if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+      removeActive();
+      const activeLink = document.querySelector(`.ul-list li a[href="#${section.id}"]`);
+      if (activeLink) activeLink.parentElement.classList.add('active');
+    }
+  });
+  if(window.scrollY > 500){
+    backToTop.style.display = "flex";
+  } else {
+    backToTop.style.display = "none";
+  }
+  revealElements.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const revealPoint = 150;
+    if(elementTop < windowHeight - revealPoint){
+      el.classList.add('active-reveal');
+    }
+  });
+});
+const revealElements = document.querySelectorAll('.home-container, .about-container, .projects-container, .certs-container, .contact-content');
+revealElements.forEach(el => el.classList.add('reveal'));
+const backToTop = document.createElement('div');
+backToTop.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+backToTop.id = "back-to-top";
+document.body.appendChild(backToTop);
+backToTop.style.cssText = `
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: #474af0;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+`;
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+backToTop.addEventListener('mouseover', () => backToTop.style.transform = 'scale(1.2)');
+backToTop.addEventListener('mouseout', () => backToTop.style.transform = 'scale(1)');
+const cards = document.querySelectorAll('.project-card, .c1, .cert-card');
+cards.forEach(card => {
+  card.addEventListener('mouseenter', () => card.style.transform = 'translateY(-8px) scale(1.05)');
+  card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0) scale(1)');
+});
+const typingElement = document.getElementById('typing-element') || document.querySelector('.info-home h3'); 
+const words = ["Python Developer", "AI Project Builder", "Algorithm Enthusiast", "B.Tech Student"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 100;
+function type() {
+    if (!typingElement) return;
+    const currentWord = words[wordIndex];
+    let displayedText = currentWord.substring(0, charIndex);
+    typingElement.innerHTML = displayedText + '<span class="cursor">|</span>';
+    if (!isDeleting && charIndex < currentWord.length) {
+        charIndex++;
+        setTimeout(type, typingSpeed);
+    } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(type, typingSpeed / 2);
+    } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) {
+            wordIndex = (wordIndex + 1) % words.length;
+        }
+        setTimeout(type, 1000);
+    }
+}
+document.addEventListener('DOMContentLoaded', type);
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Portfolio site loaded successfully!");
-  
-  // --- Start Typing Effect Logic ---
-  const typedTextSpan = document.getElementById("typed-text");
-  const textToType = "Uday"; 
-  const typingSpeed = 150; 
-  const newTextDelay = 1500; 
-  let charIndex = 0;
-  
-  function type() {
-    if (charIndex < textToType.length) {
-      typedTextSpan.textContent += textToType.charAt(charIndex);
-      charIndex++;
-      setTimeout(type, typingSpeed);
-    } 
-  }
-  setTimeout(type, newTextDelay); 
-  // --- End Typing Effect Logic ---
-
-  // Disable hover effects on touch devices by adding a body class
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-    document.body.classList.add('no-hover');
-  }
-  
-
-  // --- Start Mobile Menu Logic ---
-  const navToggle = document.getElementById('nav-toggle');
-  const navMenu = document.getElementById('nav-menu');
-
-  function toggleMenu() {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-  }
-
-  navToggle.addEventListener('click', toggleMenu);
-
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      // Close menu when a link is clicked
-      if (navMenu.classList.contains('active')) {
-        toggleMenu();
-      }
-    });
-  });
-  // --- End Mobile Menu Logic ---
-
-
-  // --- Start Scroll Animation Logic (Intersection Observer) ---
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Add 'visible' class to trigger fade-in/slide-up
-        entry.target.classList.add('visible');
-        // If the revealed element is a skill card, animate its progress bar
-        if (entry.target.classList && entry.target.classList.contains('skill-card')) {
-          animateProgressBar(entry.target);
-        }
-        observer.unobserve(entry.target); 
-      }
-    });
-  }, {
-      // Triggers when 10% of the element is visible
-      threshold: 0.1, 
-  });
-
-  // Target all elements with the 'hidden' class for observation
-  document.querySelectorAll('.hidden').forEach((element) => {
-    observer.observe(element);
-  });
-
-  // Animate progress bars for skill cards
-  function animateProgressBar(skillCard) {
-    const progressBar = skillCard.querySelector('.progress-bar');
-    const percentageText = skillCard.querySelector('.progress-percentage');
-    if (!progressBar) return;
-    
-    // Parse and clamp progress value to 0-100 range
-    const rawProgress = parseInt(progressBar.getAttribute('data-progress'), 10) || 0;
-    const targetProgress = Math.min(100, Math.max(0, rawProgress));
-
-    // Small delay so the card reveal is noticeable first
+  const loadingText = document.getElementById("loading-text");
+  const mainIcon = document.querySelector(".main-icon");
+  const subIcons = document.querySelectorAll(".sub-icons i");
+  const designerText = document.getElementById("designer-text");
+  const mainPage = document.getElementById("main-page");
+  const loadingScreen = document.getElementById("loading-screen");
+  function showElement(element, delay=0){
     setTimeout(() => {
-      progressBar.style.width = targetProgress + '%';
-      progressBar.classList.add('filled');
-      
-      // Handle percentage text animation
-      if (percentageText) {
-        // Always start from 0%
-        percentageText.textContent = '0%';
-        
-        // For 0% target, we're already done
-        if (targetProgress === 0) return;
-        
-        let current = 0;
-        const duration = 1500; // match the CSS transition duration
-        // Guard against division by zero and ensure reasonable step time
-        const stepTime = targetProgress > 0 ? Math.max(10, Math.floor(duration / targetProgress)) : 16;
-        
-        const interval = setInterval(() => {
-          current += 1;
-          percentageText.textContent = current + '%';
-          if (current >= targetProgress) {
-            clearInterval(interval);
-            // Ensure final value is exactly the target
-            percentageText.textContent = targetProgress + '%';
-          }
-        }, stepTime);
-      }
-    }, 250);
+      element.classList.remove("hidden");
+      element.classList.add("fall");
+    }, delay);
   }
-  // --- End Scroll Animation Logic ---
-
-
-  // --- Start Lightbox/Zoom Logic ---
-
-  const lightbox = document.getElementById('lightbox-overlay');
-  const lightboxImage = document.getElementById('lightbox-image');
-  const closeButton = document.getElementById('lightbox-close');
-  // Target the image elements within the certification section
-  const certImages = document.querySelectorAll('.cert-image');
-
-
-  // Track previous body overflow for restoration
-  let prevBodyOverflow = '';
-
-  // Function to open the lightbox for certificates
-  certImages.forEach(img => {
-    img.addEventListener('click', () => {
-      const fullImgSrc = img.getAttribute('data-full-img');
-      lightboxImage.src = fullImgSrc;
-      lightboxImage.alt = img.getAttribute('alt') || 'Zoomed image';
-      prevBodyOverflow = document.body.style.overflow;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    });
+  if (loadingText) showElement(loadingText, 0);
+  if (mainIcon) showElement(mainIcon, 800);
+  subIcons.forEach((icon, idx) => {
+    showElement(icon, 1600 + idx*400);
   });
-
-  // Function to close the lightbox
-  function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = prevBodyOverflow || '';
-  }
-
-  // Close when the 'X' is clicked
-  closeButton.addEventListener('click', closeLightbox);
-
-  // Close when the dark background is clicked
-  lightbox.addEventListener('click', (e) => {
-    if (e.target.id === 'lightbox-overlay') {
-      closeLightbox();
-    }
-  });
-
-  // Close when the ESC key is pressed
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-      closeLightbox();
-    }
-  });
-  
-  // --- End Lightbox/Zoom Logic ---
-
-  // --- Start Project Image Lightbox Logic ---
-  const projectImages = document.querySelectorAll('.project-image');
-  if (projectImages && projectImages.length && lightbox && lightboxImage) {
-    projectImages.forEach(img => {
-      img.addEventListener('click', () => {
-        const fullImgSrc = img.getAttribute('src');
-        lightboxImage.src = fullImgSrc;
-        lightboxImage.alt = img.getAttribute('alt') || 'Zoomed image';
-        prevBodyOverflow = document.body.style.overflow;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-      img.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          img.click();
-        }
-      });
-    });
-  }
-  // --- End Project Image Lightbox Logic ---
-
-  // --- Start Project Slideshow Logic ---
-  function initProjectSlideshows() {
-    const SLIDESHOW_INTERVAL = 5000;
-    const MOBILE_INTERVAL = 3000;
-    const slideshows = document.querySelectorAll('.project-images-slideshow');
-    if (!slideshows || slideshows.length === 0) return;
-
-    const slideshowIntervals = new WeakMap();
-
-    slideshows.forEach(slideshow => {
-      const images = Array.from(slideshow.querySelectorAll('.project-image'));
-      if (images.length <= 1) return; // skip single-image containers
-
-      const container = slideshow.closest('.project-image-container');
-      const indicators = container.querySelectorAll('.indicator');
-      const projectCard = slideshow.closest('.project-card');
-      let currentIndex = images.findIndex(img => img.classList.contains('active'));
-      if (currentIndex < 0) currentIndex = 0;
-
-      // Accessibility
-      slideshow.setAttribute('aria-live', 'polite');
-
-      function showImage(index) {
-        images.forEach((img, i) => {
-          img.classList.toggle('active', i === index);
-          if (indicators && indicators[i]) {
-            indicators[i].classList.toggle('active', i === index);
-            indicators[i].setAttribute('aria-selected', i === index ? 'true' : 'false');
-          }
-        });
-        slideshow.setAttribute('aria-label', `Showing image ${index + 1} of ${images.length}`);
-        currentIndex = index;
-      }
-
-      function rotateImage() {
-        const next = (currentIndex + 1) % images.length;
-        showImage(next);
-      }
-
-      function startSlideshow() {
-        stopSlideshow();
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        const interval = (window.innerWidth <= 768) ? MOBILE_INTERVAL : SLIDESHOW_INTERVAL;
-        const id = setInterval(rotateImage, interval);
-        slideshowIntervals.set(slideshow, id);
-      }
-
-      function stopSlideshow() {
-        const id = slideshowIntervals.get(slideshow);
-        if (id) clearInterval(id);
-        slideshowIntervals.delete(slideshow);
-      }
-
-      // Indicator clicks
-      if (indicators && indicators.length) {
-        indicators.forEach((ind, i) => {
-          // Link indicator to image for aria-controls (if image id exists)
-          const img = images[i];
-          if (img && img.id) {
-            ind.setAttribute('aria-controls', img.id);
-          }
-          ind.addEventListener('click', () => {
-            stopSlideshow();
-            showImage(i);
-            startSlideshow();
-          });
-          ind.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              ind.click();
-            }
-          });
-        });
-      }
-
-      // Pause on hover/focus
-      if (projectCard) {
-        projectCard.addEventListener('mouseenter', stopSlideshow);
-        projectCard.addEventListener('mouseleave', startSlideshow);
-        projectCard.addEventListener('focusin', stopSlideshow);
-        projectCard.addEventListener('focusout', startSlideshow);
-      }
-
-      // Start when visible using IntersectionObserver (saves CPU)
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) startSlideshow(); else stopSlideshow();
-        });
-      }, { threshold: 0.2 });
-      io.observe(slideshow.closest('.project-card'));
-    });
-  }
-
-  // Initialize slideshows after DOM ready
-  initProjectSlideshows();
-  // --- End Project Slideshow Logic ---
-
-
-  // --- Start Loading Spinner Logic ---
-  const loadingSpinner = document.getElementById('loading-spinner');
-  window.addEventListener('load', () => {
-    if (loadingSpinner) {
-      setTimeout(() => {
-        loadingSpinner.classList.add('hidden');
-        setTimeout(() => {
-          if (loadingSpinner.parentNode) {
-            loadingSpinner.parentNode.removeChild(loadingSpinner);
-          }
-        }, 500);
-      }, 500);
-    }
-  });
-  // --- End Loading Spinner Logic ---
-
-
-  // --- Start Scroll Progress Bar Logic ---
-  const scrollProgressBar = document.getElementById('scroll-progress-bar');
-  function updateScrollProgress() {
-    if (!scrollProgressBar) return;
-    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = window.scrollY;
-    let progress = 0;
-    if (scrollableHeight > 0) {
-      progress = (scrolled / scrollableHeight) * 100;
-      progress = Math.max(0, Math.min(progress, 100));
-    }
-    scrollProgressBar.style.width = progress + '%';
-  }
-  // --- End Scroll Progress Bar Logic ---
-
-
-  // --- Start Back to Top Button Logic ---
-  const backToTopBtn = document.getElementById('back-to-top');
-  function toggleBackToTopButton() {
-    if (!backToTopBtn) return;
-    if (window.scrollY > 300) {
-      backToTopBtn.classList.add('show');
-    } else {
-      backToTopBtn.classList.remove('show');
-    }
-  }
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-  // --- End Back to Top Button Logic ---
-
-
-  // --- Combine Scroll Event Handlers with requestAnimationFrame Throttling ---
-  let ticking = false;
-  const headerEl = document.querySelector('header');
-  function handleScrollRAF() {
-    updateScrollProgress();
-    toggleBackToTopButton();
-    if (headerEl) {
-      if (window.scrollY > 30) {
-        headerEl.classList.add('scrolled');
-      } else {
-        headerEl.classList.remove('scrolled');
-      }
-    }
-    ticking = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(handleScrollRAF);
-      ticking = true;
-    }
-  });
-  // Set initial state after scroll listener is attached
-  updateScrollProgress();
-  toggleBackToTopButton();
-  if (headerEl) {
-    if (window.scrollY > 30) {
-      headerEl.classList.add('scrolled');
-    } else {
-      headerEl.classList.remove('scrolled');
-    }
-  }
-
-
-  // --- Start Custom Cursor Logic ---
-  (function() {
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
-    const customCursor = document.createElement('div');
-    customCursor.className = 'custom-cursor';
-    document.body.appendChild(customCursor);
-    document.body.classList.add('custom-cursor-active');
-    const trailLength = 8;
-    const cursorTrail = [];
-    for (let i = 0; i < trailLength; i++) {
-      const trail = document.createElement('div');
-      trail.className = 'cursor-trail';
-      document.body.appendChild(trail);
-      cursorTrail.push(trail);
-    }
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let cursorX = mouseX, cursorY = mouseY;
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      customCursor.style.opacity = '1';
-      cursorTrail.forEach(t => t.style.opacity = '0.6');
-    });
-    document.addEventListener('mouseleave', () => {
-      customCursor.style.opacity = '0';
-      cursorTrail.forEach(t => t.style.opacity = '0');
-    });
-    document.addEventListener('mouseenter', () => {
-      customCursor.style.opacity = '1';
-      cursorTrail.forEach(t => t.style.opacity = '0.6');
-    });
-    function animateCursor() {
-      cursorX += (mouseX - cursorX) * 0.15;
-      cursorY += (mouseY - cursorY) * 0.15;
-      customCursor.style.left = cursorX + 'px';
-      customCursor.style.top = cursorY + 'px';
-      let prevX = cursorX, prevY = cursorY;
-      for (let i = 0; i < trailLength; i++) {
-        const t = cursorTrail[i];
-        prevX += (mouseX - prevX) * (0.15 + i * 0.04);
-        prevY += (mouseY - prevY) * (0.15 + i * 0.04);
-        t.style.left = prevX + 'px';
-        t.style.top = prevY + 'px';
-        t.style.opacity = (0.6 - i * 0.07).toString();
-      }
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-    // Hover/click state
-    const interactive = document.querySelectorAll('a, button, .cert-item, .skill-card, .social-icon, .project-image');
-    interactive.forEach(el => {
-      el.addEventListener('mouseenter', () => customCursor.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => customCursor.classList.remove('cursor-hover'));
-    });
-    document.addEventListener('mousedown', () => customCursor.classList.add('cursor-click'));
-    document.addEventListener('mouseup', () => customCursor.classList.remove('cursor-click'));
-  })();
-  // --- End Custom Cursor Logic ---
+  if (designerText) showElement(designerText, 2800);
+  setTimeout(() => {
+    if (loadingScreen) loadingScreen.style.opacity = '0';
+    setTimeout(() => loadingScreen && (loadingScreen.style.display='none'), 500);
+    if (mainPage) mainPage.classList.add("visible");
+  }, 4000);
 });
