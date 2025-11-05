@@ -2,483 +2,339 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8YV08FTFV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-N8YV08FTFV');
-</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Uday Deore | Portfolio</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Uday Deore - B.Tech student portfolio showcasing Python programming, AI/ML projects, web development, and data structures. Explore my projects including cipher tools, expense trackers, and graph algorithms.">
-  <meta name="keywords" content="Uday Deore, portfolio, Python developer, AI projects, machine learning, web development, B.Tech student, Streamlit apps, data structures, algorithms, GitHub projects">
-  <meta name="author" content="Uday Deore">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0B1220">
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alwaysuday006.github.io/my_portfolio/">
-  <meta property="og:title" content="Uday Deore | Python Developer & AI Enthusiast Portfolio">
-  <meta property="og:description" content="B.Tech student portfolio featuring Python projects, AI/ML applications, and web development work. Explore my journey in programming and technology.">
-  <meta property="og:image" content="https://ik.imagekit.io/alwaysuday/og-image.jpg?updatedAt=1760873925252">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Uday Deore Portfolio Preview">
-  <meta property="og:site_name" content="Uday Deore Portfolio">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Uday Deore | Python Developer Portfolio">
-  <meta name="twitter:description" content="B.Tech student showcasing Python, AI/ML, and web development projects.">
-  <meta name="twitter:image" content="https://alwaysuday006.github.io/my_portfolio/assets/og-image.jpg">
-
-  <!-- Updated Open Graph/Twitter preview image to canonical public URL -->
-  <meta property="og:image" content="https://alwaysuday006.github.io/my_portfolio/assets/og-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Uday Deore Portfolio Preview">
-
-  <!-- Favicon Links -->
-  <!-- Use repository-relative paths so icons resolve correctly when hosted under a subpath (GitHub Pages) -->
+  <title>Uday Deore</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512x512.png">
   <link rel="manifest" href="site.webmanifest">
-
-  <!-- JSON-LD Structured Data: Person -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-      "@id": "https://alwaysuday006.github.io/my_portfolio/#person",
-    "name": "Uday Deore",
-    "jobTitle": "B.Tech Student & Python Developer",
-    "description": "B.Tech student specializing in Python programming, AI/ML projects, and web development",
-      "url": "https://alwaysuday006.github.io/my_portfolio/",
-      "email": "mailto:udaydeore006@gmail.com",
-    "sameAs": [
-      "https://github.com/AlwaysUday006",
-      "https://www.linkedin.com/in/uday-deore-5949bb32a"
-    ],
-    "knowsAbout": [
-      "Python Programming",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Web Development",
-      "Data Structures",
-      "Algorithms"
-    ],
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "College of Engineering, Pune"
-    }
-  }
-  </script>
-  <!-- JSON-LD Structured Data: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Uday Deore Portfolio",
-     "url": "https://alwaysuday006.github.io/my_portfolio/",
-    "description": "Portfolio website showcasing Python and AI projects",
-    "author": {
-      "@id": "https://alwaysuday006.github.io/my_portfolio/#person"
-    }
-  }
-  </script>
-  <!-- JSON-LD Structured Data: ItemList (Projects) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Vigenère Cipher Tool",
-        "description": "A Python-based encryption tool to encode and decode text.",
-        "url": "https://alwaysuday006-cipher-project-app-uqhd8o.streamlit.app/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Luhn Algorithm Validator",
-        "description": "A Python script to validate credit card numbers and identification numbers.",
-        "url": "https://alwaysuday006-luhn-algorithm-app-056.streamlit.app/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Expense Tracker",
-        "description": "Track daily expenses with a Python CLI app.",
-        "url": "https://alwaysuday006-expense-tracker-app-hxkusf.streamlit.app/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Case Converter",
-        "description": "A Python utility that converts PascalCase or camelCase strings into snake_case format.",
-        "url": "https://alwaysuday006-pascalcase-to-snake-case-converter-app-zyccqn.streamlit.app/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "name": "Square Root Finder (Bisection Method)",
-        "description": "A Python program that finds the square root of a number using the Bisection Method, a precise numerical approach that repeatedly halves an interval to approximate roots efficiently.",
-        "url": "https://alwaysuday006-sqrt-by-bisection-app-o4nyqa.streamlit.app/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "name": "Arithmetic Formatter",
-        "description": "A Python project that neatly arranges arithmetic problems vertically and side by side — optionally displaying answers.",
-        "url": "https://alwaysuday006-arithmetic-formatter-app-y3tbrj.streamlit.app/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "name": "Password Generator",
-        "description": "A Python-based tool that generates strong, random, and customizable passwords for improved online security — available as both a CLI program and an interactive Streamlit web app.",
-        "url": "https://alwaysuday006-password-generator-app-uj6mmb.streamlit.app/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "name": "Custom Shortest Path Finder",
-        "description": "An interactive Python and Streamlit-based project that lets users build their own graph, visualize connections, and find the shortest path between nodes dynamically using Dijkstra's algorithm — perfect for learning and exploring graph theory concepts.",
-        "url": "https://alwaysuday006-shortest-path-algorithm-app-xf0tpb.streamlit.app/"
-      }
-    ]
-  }
-  </script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wght@300..800&family=Playfair+Display:wght@400..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/J6MD3Gzv1bV0NfQ8WfGZ7GJ4X0J4l9hK8G7G7Zp1Y0CwQFZ9QW8p1p9QxJpZq+Q2CkL4QYZ0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="#about" class="skip-to-main">Skip to main content</a>
-  <div id="loading-spinner" class="loading-overlay" role="status" aria-live="polite" aria-label="Page loading">
-    <div class="spinner-container">
-      <div class="spinner"></div>
-      <p class="loading-text">Loading...</p>
+  <div id="loading-screen">
+    <div class="loading-content">
+      <i class="fa-solid fa-laptop-code fa-5x main-icon hidden"></i>
+      <h1 id="loading-text" class="hidden">UDAY'S PROFILE</h1>
+      <div class="sub-icons">
+        <i class="fa-brands fa-github fa-2x hidden"></i>
+        <i class="fa-solid fa-code fa-2x hidden"></i>
+        <i class="fa-solid fa-user fa-2x hidden"></i>
+      </div>
+      <h2 id="designer-text" class="hidden">Python & AI Developer</h2>
     </div>
   </div>
-  <div id="scroll-progress-bar"></div>
-  <div id="lightbox-overlay">
-    <span id="lightbox-close" aria-label="Close lightbox">&times;</span>
-  <img id="lightbox-image" src="" alt="Zoomed image">
-  </div>
-  <header>
-    <nav aria-label="Main navigation">
-      <h2 class="logo">Uday<span>Deore</span></h2>
-      <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <ul class="nav-links" id="nav-menu">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certs">Certifications</a></li> 
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <div class="hero-profile">
-  <img src="https://ik.imagekit.io/alwaysuday/Profile%20picture.png?updatedAt=1760873925252" alt="Uday Deore Profile Picture" class="profile-img" loading="eager" width="200" height="200">
-    </div>
-    <h1>👋 Hi, I'm <span id="typed-text"></span></h1>
-    <p>A B.Tech student exploring Python & AI projects 🚀</p>
-    <a href="#projects" class="btn" aria-label="Navigate to projects section">View My Work</a>
-    <div class="social-links">
-      <a href="https://github.com/AlwaysUday006" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub Profile">🔗</a>
-      <a href="https://www.linkedin.com/in/uday-deore-5949bb32a" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn Profile">💼</a>
-      <a href="mailto:udaydeore006@gmail.com" class="social-icon" aria-label="Email Contact">📧</a>
-    </div>
-  </section>
-
-  <section id="about" class="section hidden"> 
-    <h2>🧑‍💻 About Me</h2>
-    <p>
-      I’m Uday Deore, a **B.Tech student** currently in my second year. I have a strong interest in **Python programming** and **AI-related projects**.
-    </p>
-    <p>
-      I enjoy learning by building practical projects like ciphers, expense trackers, and AI-driven tools. My goal is to become skilled in Python and explore areas such as **data science, machine learning, and automation**.
-    </p>
-    <p>
-      I believe in continuous learning and sharing my work through GitHub and my portfolio website. 🚀
-    </p>
-  </section>
-
-  <section id="skills" class="section hidden">
-    <h2>🛠️ Skills & Expertise</h2>
-    <p>Technologies and tools I work with</p>
-    <div class="skills-container">
-
-      <div class="skill-card hidden">
-        <div class="skill-icon">🐍</div>
-        <h3 class="skill-name">Python Programming</h3>
-        <div class="progress-bar-container">
-          <div class="progress-bar" data-progress="90" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Python programming proficiency"></div>
-        </div>
-        <span class="progress-percentage">0%</span>
+  <div id="main-page">
+    <header class="header-list">
+      <div class="div-list ">
+        <ul class="ul-list">
+          <li class="active">
+            <i class="fa-regular fa-house"></i>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <i class="fa-regular fa-address-card"></i>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <i class="fa-regular fa-folder-open"></i>
+            <a href="#project">Projects</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-certificate"></i>
+            <a href="#certs">Certifications</a>
+          </li>
+          <li>
+            <i class="fa-regular fa-envelope"></i>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
       </div>
+    </header>
 
-      <div class="skill-card hidden">
-        <div class="skill-icon">🤖</div>
-        <h3 class="skill-name">AI & Machine Learning</h3>
-        <div class="progress-bar-container">
-          <div class="progress-bar" data-progress="75" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="AI and Machine Learning proficiency"></div>
+    <section class="home" id="home">
+      <p class="home-p">
+        <span class="home-s">. </span>B.Tech Student & Python Enthusiast
+      </p>
+      <div class="home-container">
+        <div class="home-section">
+          <div class="info-home">
+            <h1><i class="fa-solid fa-circle-user"></i> Hi, I'm Uday</h1>
+            <h3 id="typing-element"></h3>
+            <div class="info-p">
+              <p>I focus on <strong>Python programming</strong> and <strong>AI-related projects</strong>, building practical applications</p>
+              <p>that combine thoughtful design with clean, functional code.</p>
+            </div>
+            <div class="info-p2">
+              <p><i class="fa-solid fa-location-dot"></i> Based in Maharashtra, India</p>
+              <p><i class="fa-solid fa-briefcase"></i> Available for Collaborations</p>
+            </div>
+            <div class="btnn">
+              <a href="#contact" class="btn-home1"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+              <a href="#project" class="btn-home2"><i class="fa-solid fa-folder-open"></i> View Projects</a>
+            </div>
+            <div class="hhr">
+              <hr>
+            </div>
+            <div class="follow">
+              <p class="followw">Follow me:</p>
+              <ul>
+                <li><a href="https://github.com/AlwaysUday006" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><img src="assets/icons8-github-50.png" alt="GitHub" class="social-icon-img"> GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/uday-deore-5949bb32a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><img src="assets/icons8-linkedin-50.png" alt="LinkedIn" class="social-icon-img"> LinkedIn</a></li>
+                <li><a href="mailto:udaydeore006@gmail.com" aria-label="Email"><img src="assets/icons8-email-50.png" alt="Email" class="social-icon-img"> Email</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <span class="progress-percentage">0%</span>
+        <img src="https://stalwart-baklava-8ed433.netlify.app/images/img2.jpg" alt="Uday Deore Profile Picture">
       </div>
-
-      <div class="skill-card hidden">
-        <div class="skill-icon">🌐</div>
-        <h3 class="skill-name">Web Development</h3>
-        <div class="progress-bar-container">
-          <div class="progress-bar" data-progress="70" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Web Development proficiency"></div>
-        </div>
-        <span class="progress-percentage">0%</span>
-      </div>
-
-      <div class="skill-card hidden">
-        <div class="skill-icon">💾</div>
-        <h3 class="skill-name">Data Structures</h3>
-        <div class="progress-bar-container">
-          <div class="progress-bar" data-progress="80" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Data Structures proficiency"></div>
-        </div>
-        <span class="progress-percentage">0%</span>
-      </div>
-
-      <div class="skill-card hidden">
-        <div class="skill-icon">🧠</div>
-        <h3 class="skill-name">Problem Solving</h3>
-        <div class="progress-bar-container">
-          <div class="progress-bar" data-progress="82" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Problem Solving proficiency"></div>
-        </div>
-        <span class="progress-percentage">0%</span>
-      </div>
-
-      <div class="skill-card hidden">
-        <div class="skill-icon">🗂️</div>
-        <h3 class="skill-name">Git & GitHub</h3>
-        <div class="progress-bar-container">
-          <div class="progress-bar" data-progress="75" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Git and GitHub proficiency"></div>
-        </div>
-        <span class="progress-percentage">0%</span>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="certs" class="section hidden">
-    <h2>🏆 Certifications</h2>
-    
-    <div class="certs-horizontal-container"> 
-        
-        <div class="cert-item hidden">
-            <img src="https://ik.imagekit.io/alwaysuday/Programming_in_C_Uday_Deore_page-0001.jpg?updatedAt=1760869951203" alt="Programming in C Certificate" class="cert-image" data-full-img="https://ik.imagekit.io/alwaysuday/Programming_in_C_Uday_Deore_page-0001.jpg?updatedAt=1760869951203" loading="lazy" width="200" height="150">
-            <h3>Programming in C</h3>
-            <p>Issued by **Infosys | Springboard** (June 12, 2025). Covered core C programming principles.</p>
-            <a href="https://drive.google.com/file/d/1JdJEtRkMWYGpx726pPpZYuC95dFfJG4y/view?usp=sharing" target="_blank" aria-label="View Programming in C certificate credential">View Credential</a>
-        </div>
-    </div>
-  </section>
-  
-  <section id="projects" class="section"> 
-    <h2>✨ Projects</h2>
-    
-    <div class="projects-grid-container">
-
-        <div class="project-card hidden">
-          <div class="project-image-container">
-            <div class="project-images-slideshow" aria-label="Image slideshow">
-              <img id="vigenere-img-1" src="https://ik.imagekit.io/alwaysuday/1.png?updatedAt=1761032475409" alt="Vigenère Cipher Tool - Encryption Interface" class="project-image active" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-              <img id="vigenere-img-2" src="https://ik.imagekit.io/alwaysuday/13.png?updatedAt=1761035836976" alt="Vigenère Cipher Tool - Decryption Mode" class="project-image" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-            </div>
-            <div class="slideshow-indicators" role="tablist">
-              <span class="indicator active" role="tab" tabindex="0" aria-label="View image 1" aria-selected="true"></span>
-              <span class="indicator" role="tab" tabindex="0" aria-label="View image 2" aria-selected="false"></span>
-            </div>
-          </div>
-          <h3>🔐 Vigenère Cipher Tool</h3>
-          <p>A Python-based encryption tool to encode and decode text.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">Cryptography</span>
-          </div>
-          <div class="project-links">
-            <a href="https://alwaysuday006-cipher-project-app-uqhd8o.streamlit.app/" target="_blank" class="project-btn demo-btn" aria-label="View live demo of Vigenère Cipher Tool">View Project</a> 
-            <a href="https://github.com/your-username/cipher_project" target="_blank" class="project-btn github-btn" aria-label="View source code for Vigenère Cipher Tool on GitHub">View on GitHub</a>
-          </div>
-        </div>
-        
-        <div class="project-card hidden">
-          <div class="project-image-container">
-            <img id="luhn-img-1" src="https://ik.imagekit.io/alwaysuday/2.png?updatedAt=1761032475584" alt="Luhn Algorithm Validator Screenshot" class="project-image" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-          </div>
-          <h3>💳 Luhn Algorithm Validator</h3>
-          <p>A Python script to validate credit card numbers and identification numbers.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">Validation</span>
-          </div>
-          <div class="project-links">
-            <a href="https://alwaysuday006-luhn-algorithm-app-056.streamlit.app/" target="_blank" class="project-btn demo-btn" aria-label="View live demo of Luhn Algorithm Validator">View Project</a>
-            <a href="https://github.com/your-username/luhn_validator_project" target="_blank" class="project-btn github-btn" aria-label="View source code for Luhn Algorithm Validator on GitHub">View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="project-card hidden">
-          <div class="project-image-container">
-            <div class="project-images-slideshow" aria-label="Image slideshow">
-              <img id="expense-img-1" src="https://ik.imagekit.io/alwaysuday/3.png?updatedAt=1761032475500" alt="Expense Tracker - Main View" class="project-image active" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-            </div>
-          </div>
-          <h3>💰 Expense Tracker</h3>
-          <p>Track daily expenses with a Python CLI app.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">CLI</span>
-          </div>
-          <div class="project-links">
-            <a href="https://alwaysuday006-expense-tracker-app-hxkusf.streamlit.app/" target="_blank" class="project-btn demo-btn" aria-label="View live demo of Expense Tracker">View Project</a>
-            <a href="https://github.com/your-username/expense_tracker" target="_blank" class="project-btn github-btn" aria-label="View source code for Expense Tracker on GitHub">View on GitHub</a>
-          </div>
-        </div>
-        
-        <div class="project-card hidden">
-          <div class="project-image-container">
-            <img id="case-img-1" src="https://ik.imagekit.io/alwaysuday/4.png?updatedAt=1761032475438" alt="Case Converter Screenshot" class="project-image" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-          </div>
-          <h3>📝 PascalCase / camelCase to snake\_case Converter</h3>
-          <p>A Python utility that converts PascalCase or camelCase strings into snake_case format.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">String Manipulation</span>
-          </div>
-          <div class="project-links">
-            <a href="https://alwaysuday006-pascalcase-to-snake-case-converter-app-zyccqn.streamlit.app/" target="_blank" class="project-btn demo-btn" aria-label="View live demo of Case Converter">View Project</a>
-            <a href="https://github.com/AlwaysUday006/PascalCase-to-snake_case-Converter.git" target="_blank" class="project-btn github-btn" aria-label="View source code for Case Converter on GitHub">View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="project-card hidden">
-          <div class="project-image-container">
-            <div class="project-images-slideshow" aria-label="Image slideshow">
-              <img id="sqrt-img-1" src="https://ik.imagekit.io/alwaysuday/5.png?updatedAt=1761032475522" alt="Square Root Finder - Main Interface" class="project-image active" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-              <img id="sqrt-img-2" src="https://ik.imagekit.io/alwaysuday/6.png?updatedAt=1761032475516" alt="Square Root Finder - Result View" class="project-image" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-            </div>
-            <div class="slideshow-indicators" role="tablist">
-              <span class="indicator active" role="tab" tabindex="0" aria-label="View image 1" aria-selected="true"></span>
-              <span class="indicator" role="tab" tabindex="0" aria-label="View image 2" aria-selected="false"></span>
-            </div>
-          </div>
-          <h3>🧮 Square Root Finder (Bisection Method)</h3>
-          <p>A Python program that finds the square root of a number using the Bisection Method, a precise numerical approach that repeatedly halves an interval to approximate roots efficiently.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">Algorithms</span>
-          </div>
-          <div class="project-links">
-            <a href="https://alwaysuday006-sqrt-by-bisection-app-o4nyqa.streamlit.app/" target="_blank" class="project-btn demo-btn" aria-label="View live demo of Square Root Finder (Bisection Method)">View Project</a>
-            <a href="https://github.com/AlwaysUday006/sqrt_by_bisection.git" target="_blank" class="project-btn github-btn" aria-label="View source code for Square Root Finder (Bisection Method) on GitHub">View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="project-card hidden">
-          <div class="project-image-container">
-            <img id="arith-img-1" src="https://ik.imagekit.io/alwaysuday/7.png?updatedAt=1761032475527" alt="Arithmetic Formatter Screenshot" class="project-image" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-          </div>
-          <h3>🧮 Arithmetic Formatter</h3>
-          <p>A Python project that neatly arranges arithmetic problems vertically and side by side — optionally displaying answers.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">Math</span>
-          </div>
-          <div class="project-links">
-            <a href="https://alwaysuday006-arithmetic-formatter-app-y3tbrj.streamlit.app/" target="_blank" class="project-btn demo-btn" aria-label="View live demo of Arithmetic Formatter">View Project</a>
-            <a href="https://github.com/AlwaysUday006/arithmetic_formatter.git" target="_blank" class="project-btn github-btn" aria-label="View source code for Arithmetic Formatter on GitHub">View on GitHub</a>
-          </div>
-        </div>
-        <div class="project-card hidden">
-          <div class="project-image-container">
-            <div class="project-images-slideshow" aria-label="Image slideshow">
-              <img id="password-img-1" src="https://ik.imagekit.io/alwaysuday/8.png?updatedAt=1761032475558" alt="Password Generator - Main" class="project-image active" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-            </div>
-          </div>
-          <h3>🔐 Password Generator</h3>
-          <p>A Python-based tool that generates strong, random, and customizable passwords for improved online security — available as both a CLI program and an interactive Streamlit web app.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">Security</span>
-          </div>
-          <div class="project-links">
-            <a href="https://alwaysuday006-password-generator-app-uj6mmb.streamlit.app/" target="_blank" class="project-btn demo-btn" aria-label="View live demo of Password Generator">View Project</a>
-            <a href="https://github.com/AlwaysUday006/password_generator.git" target="_blank" class="project-btn github-btn" aria-label="View source code for Password Generator on GitHub">View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="project-card hidden">
-          <div class="project-image-container">
-            <div class="project-images-slideshow" aria-label="Image slideshow">
-              <img id="shortest-img-1" src="https://ik.imagekit.io/alwaysuday/9.png?updatedAt=1761032475526" alt="Shortest Path Finder - Graph Builder" class="project-image active" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-              <img id="shortest-img-2" src="https://ik.imagekit.io/alwaysuday/10.png?updatedAt=1761032475572_" alt="Shortest Path Finder - Visualization" class="project-image" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-              <img id="shortest-img-3" src="https://ik.imagekit.io/alwaysuday/11.png?updatedAt=1761032475532" alt="Shortest Path Finder - Path Highlight" class="project-image" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-              <img id="shortest-img-4" src="https://ik.imagekit.io/alwaysuday/12.png?updatedAt=1761032475508" alt="Shortest Path Finder - Result View" class="project-image" loading="lazy" width="600" height="400" role="button" tabindex="0" aria-label="Click to view full size image">
-            </div>
-            <div class="slideshow-indicators" role="tablist">
-              <span class="indicator active" role="tab" tabindex="0" aria-label="View image 1" aria-selected="true"></span>
-              <span class="indicator" role="tab" tabindex="0" aria-label="View image 2" aria-selected="false"></span>
-              <span class="indicator" role="tab" tabindex="0" aria-label="View image 3" aria-selected="false"></span>
-              <span class="indicator" role="tab" tabindex="0" aria-label="View image 4" aria-selected="false"></span>
-            </div>
-          </div>
-          <h3>🧭 Custom Shortest Path Finder</h3>
-          <p>An interactive Python and Streamlit-based project that lets users build their own graph, visualize connections, and find the shortest path between nodes dynamically using Dijkstra's algorithm — perfect for learning and exploring graph theory concepts.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Streamlit</span>
-            <span class="tech-tag">Graph Theory</span>
-            <span class="tech-tag">Dijkstra</span>
-          </div>
-          <div class="project-links">
-            <a href="https://alwaysuday006-shortest-path-algorithm-app-xf0tpb.streamlit.app/" target="_blank" class="project-btn demo-btn" aria-label="View live demo of Custom Shortest Path Finder">View Project</a>
-            <a href="https://github.com/AlwaysUday006/shortest_path_algorithm.git" target="_blank" class="project-btn github-btn" aria-label="View source code for Custom Shortest Path Finder on GitHub">View on GitHub</a>
-          </div>
-        </div>
-        </div>
     </section>
 
-  <section id="contact" class="section hidden"> 
-    <h2>📧 Contact Me</h2>
-    <p>Email: <a href="mailto:udaydeore006@gmail.com" aria-label="Send email to Uday Deore">udaydeore006@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/uday-deore-5949bb32a" target="_blank" aria-label="Visit Uday Deore's LinkedIn profile">in/uday-deore-5949bb32a</a></p>
-    <p>GitHub: <a href="https://github.com/AlwaysUday006" target="_blank" aria-label="Visit Uday Deore's GitHub profile">https://github.com/AlwaysUday006</a></p>
-  </section>
+    <section class="about" id="about" >
+      <p><i class="fa-solid fa-user-tie"></i> ABOUT ME</p>
+      <div class="title">
+        <h1>Building Meaningful</h1>
+        <h1>Digital Experiences</h1>
+      </div>
+      <div class="hrrr">
+        <hr>
+      </div>
+      <div class="about-container">
+        <div class="info-about">
+          <div class="about-info">
+            <p>
+              I'm Uday Deore, a B.Tech student currently in my second year. I have a strong interest in Python programming and AI-related projects. I enjoy learning by building practical projects like ciphers, expense trackers, and AI-driven tools.
+            </p>
+            <p>
+              My goal is to become skilled in Python and explore areas such as data science, machine learning, and automation. I believe in continuous learning and sharing my work through GitHub and my portfolio website.
+            </p>
+          </div>
+          <h2><i class="fa-solid fa-bullseye"></i> Core Focus & Education</h2>
+          <div class="card">
+            <div class="c1">
+              <h3><i class="fa-solid fa-code"></i> Focus</h3>
+              <p>Python, C, Streamlit, Algorithms, Data Analysis</p>
+            </div>
+            <div class="c1">
+              <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+              <p>B.Tech Computer Science (2nd Year)</p>
+            </div>
+            <div class="c1">
+              <h3><i class="fa-solid fa-folder-open"></i> Projects</h3>
+              <p>Built more than 8 projects</p>
+            </div>
+          </div>
+        </div>
+        <img src="https://stalwart-baklava-8ed433.netlify.app/images/img.jpg" alt="">
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2025 Uday Deore | All Rights Reserved</p>
-  </footer>
-  <button id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+    <section class="project" id="project">
+      <p><i class="fa-solid fa-star"></i> PROJECTS</p>
+      <h1>Featured Work</h1>
+      <hr>
+      <div class="info-pro">
+        <p>A showcase of my recent projects demonstrating Python, AI/ML and problem-solving.</p>
+      </div>
+      <div class="projects-container">
+        <div class="project-card">
+          <img src="assets/og-image.jpg" alt="Vigenère Cipher Tool">
+          <h3>🔐 Vigenère Cipher Tool</h3>
+          <p>A Python-based encryption tool to encode and decode text.</p>
+          <div class="skills">
+            <a href="#">Python</a>
+            <a href="#">Streamlit</a>
+            <a href="#">Cryptography</a>
+          </div>
+          <div class="btns">
+            <a href="https://github.com/your-username/cipher_project" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://alwaysuday006-cipher-project-app-uqhd8o.streamlit.app/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/og-image.jpg" alt="Luhn Algorithm Validator">
+          <h3>💳 Luhn Algorithm Validator</h3>
+          <p>A Python script to validate credit card numbers and identification numbers.</p>
+          <div class="skills">
+            <a href="#">Python</a>
+            <a href="#">Streamlit</a>
+            <a href="#">Validation</a>
+          </div>
+          <div class="btns">
+            <a href="https://github.com/your-username/luhn_validator_project" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://alwaysuday006-luhn-algorithm-app-056.streamlit.app/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/og-image.jpg" alt="Expense Tracker">
+          <h3>💰 Expense Tracker</h3>
+          <p>Track daily expenses with a Python CLI app.</p>
+          <div class="skills">
+            <a href="#">Python</a>
+            <a href="#">Streamlit</a>
+            <a href="#">CLI</a>
+          </div>
+          <div class="btns">
+            <a href="https://github.com/your-username/expense_tracker" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://alwaysuday006-expense-tracker-app-hxkusf.streamlit.app/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/og-image.jpg" alt="Case Converter">
+          <h3>📝 PascalCase / camelCase to snake_case Converter</h3>
+          <p>A Python utility that converts PascalCase or camelCase strings into snake_case format.</p>
+          <div class="skills">
+            <a href="#">Python</a>
+            <a href="#">Streamlit</a>
+            <a href="#">String Manipulation</a>
+          </div>
+          <div class="btns">
+            <a href="https://github.com/AlwaysUday006/PascalCase-to-snake_case-Converter.git" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://alwaysuday006-pascalcase-to-snake-case-converter-app-zyccqn.streamlit.app/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/og-image.jpg" alt="Square Root Finder">
+          <h3>🧮 Square Root Finder (Bisection Method)</h3>
+          <p>A Python program that finds the square root of a number using the Bisection Method.</p>
+          <div class="skills">
+            <a href="#">Python</a>
+            <a href="#">Streamlit</a>
+            <a href="#">Algorithms</a>
+          </div>
+          <div class="btns">
+            <a href="https://github.com/AlwaysUday006/sqrt_by_bisection.git" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://alwaysuday006-sqrt-by-bisection-app-o4nyqa.streamlit.app/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/og-image.jpg" alt="Arithmetic Formatter">
+          <h3>🧮 Arithmetic Formatter</h3>
+          <p>Neatly arranges arithmetic problems vertically and side by side — with answers.</p>
+          <div class="skills">
+            <a href="#">Python</a>
+            <a href="#">Streamlit</a>
+            <a href="#">Math</a>
+          </div>
+          <div class="btns">
+            <a href="https://github.com/AlwaysUday006/arithmetic_formatter.git" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://alwaysuday006-arithmetic-formatter-app-y3tbrj.streamlit.app/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/og-image.jpg" alt="Password Generator">
+          <h3>🔐 Password Generator</h3>
+          <p>Generates strong, random, and customizable passwords.</p>
+          <div class="skills">
+            <a href="#">Python</a>
+            <a href="#">Streamlit</a>
+            <a href="#">Security</a>
+          </div>
+          <div class="btns">
+            <a href="https://github.com/AlwaysUday006/password_generator.git" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://alwaysuday006-password-generator-app-uj6mmb.streamlit.app/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="assets/og-image.jpg" alt="Custom Shortest Path Finder">
+          <h3>🧭 Custom Shortest Path Finder</h3>
+          <p>Interactive Dijkstra-based shortest path visualizer with custom graph builder.</p>
+          <div class="skills">
+            <a href="#">Python</a>
+            <a href="#">Streamlit</a>
+            <a href="#">Graph Theory</a>
+            <a href="#">Dijkstra</a>
+          </div>
+          <div class="btns">
+            <a href="https://github.com/AlwaysUday006/shortest_path_algorithm.git" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://alwaysuday006-shortest-path-algorithm-app-xf0tpb.streamlit.app/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="certs" id="certs">
+      <p><i class="fa-solid fa-trophy"></i> CERTIFICATIONS</p>
+      <h1>My Certifications</h1>
+      <hr>
+      <div class="certs-container">
+        <div class="cert-card">
+          <img class="cert-image" src="https://ik.imagekit.io/alwaysuday/Programming_in_C_Uday_Deore_page-0001.jpg?updatedAt=1760869951203" alt="Programming in C Certificate">
+          <h3><i class="fa-solid fa-certificate"></i> Programming in C</h3>
+          <p>Infosys | Springboard (June 12, 2025). Covered core C programming principles.</p>
+          <div class="btns">
+            <a href="https://drive.google.com/file/d/1JdJEtRkMWYGpx726pPpZYuC95dFfJG4y/view?usp=sharing" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> View Credential</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <p><i class="fa-solid fa-envelope"></i> CONTACT</p>
+      <h1>Get in Touch</h1>
+      <div class="contact-content">
+        <div class="contact-info slide-in-left">
+          <p>I'm always open to discuss exciting projects and new opportunities. Let's collaborate!</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>udaydeore006@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Maharashtra, India</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/AlwaysUday006" class="social-link" target="_blank" aria-label="GitHub"><img src="assets/icons8-github-50.png" alt="GitHub" class="social-icon-img"></a>
+            <a href="https://www.linkedin.com/in/uday-deore-5949bb32a" class="social-link" target="_blank" aria-label="LinkedIn"><img src="assets/icons8-linkedin-50.png" alt="LinkedIn" class="social-icon-img"></a>
+            <a href="mailto:udaydeore006@gmail.com" class="social-link" aria-label="Email"><img src="assets/icons8-email-50.png" alt="Email" class="social-icon-img"></a>
+          </div>
+        </div>
+        <div class="contact-form slide-in-right">
+          <form id="contact-form">
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required name="user_name">
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required name="user_email">
+            </div>
+            <div class="form-group">
+              <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-send"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <h2 class="footer-logo">Uday Deore</h2>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#project">Projects</a></li>
+          <li><a href="#certs">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-social">
+          <a href="https://github.com/AlwaysUday006" target="_blank" aria-label="GitHub"><img src="assets/icons8-github-50.png" alt="GitHub" class="social-icon-img"></a>
+          <a href="https://www.linkedin.com/in/uday-deore-5949bb32a" target="_blank" aria-label="LinkedIn"><img src="assets/icons8-linkedin-50.png" alt="LinkedIn" class="social-icon-img"></a>
+          <a href="mailto:udaydeore006@gmail.com" aria-label="Email"><img src="assets/icons8-email-50.png" alt="Email" class="social-icon-img"></a>
+        </div>
+        <p class="footer-copy">© 2025 Uday Deore. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
