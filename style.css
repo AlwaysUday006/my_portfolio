@@ -109,9 +109,231 @@ header {
 
 }
 
+.mobile-menu-toggle {
+
+  display: none;
+
+  position: fixed;
+
+  top: 20px;
+
+  right: 20px;
+
+  background: #474af0;
+
+  color: white;
+
+  border: none;
+
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  z-index: 1001;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+
+  transition: transform 0.3s ease;
+
+}
+
+.mobile-menu-toggle:hover {
+
+  transform: scale(1.1);
+
+}
+
+.mobile-menu-overlay {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  z-index: 2000;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+}
+
+.mobile-menu-overlay.active {
+
+  opacity: 1;
+
+  visibility: visible;
+
+}
+
+.mobile-menu {
+
+  position: fixed;
+
+  top: 0;
+
+  right: -100%;
+
+  width: 280px;
+
+  max-width: 85%;
+
+  height: 100%;
+
+  background: white;
+
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+
+  transition: right 0.3s ease;
+
+  overflow-y: auto;
+
+  z-index: 2001;
+
+}
+
+.mobile-menu-overlay.active .mobile-menu {
+
+  right: 0;
+
+}
+
+.mobile-menu-close {
+
+  position: absolute;
+
+  top: 20px;
+
+  right: 20px;
+
+  background: transparent;
+
+  border: none;
+
+  font-size: 28px;
+
+  color: #333;
+
+  cursor: pointer;
+
+  width: 44px;
+
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  transition: background 0.3s ease;
+
+}
+
+.mobile-menu-close:hover {
+
+  background: #f0f0f0;
+
+}
+
+.mobile-menu-list {
+
+  list-style: none;
+
+  padding: 80px 0 20px 0;
+
+  margin: 0;
+
+}
+
+.mobile-menu-list li {
+
+  padding: 0;
+
+  margin: 0;
+
+}
+
+.mobile-menu-list li a {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px 25px;
+
+  color: #333;
+
+  text-decoration: none;
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  border-bottom: 1px solid #f0f0f0;
+
+  transition: background 0.3s ease, color 0.3s ease;
+
+  min-height: 44px;
+
+}
+
+.mobile-menu-list li a:hover,
+
+.mobile-menu-list li.active a {
+
+  background: #474af0;
+
+  color: white;
+
+}
+
+.mobile-menu-list li i {
+
+  font-size: 20px;
+
+  width: 24px;
+
+  text-align: center;
+
+}
+
 .header-list {
 
   margin: 15px 20px;
+
+}
+
+@media (max-width: 768px) {
+
+  .header-list {
+
+    margin: 10px 10px;
+
+  }
 
 }
 
@@ -1385,15 +1607,21 @@ body {
 
 @media (max-width: 768px) {
 
-  header {
+  .ul-list {
 
     display: none;
 
   }
 
-  .home, .about, .project, .services, .contact {
+  .mobile-menu-toggle {
 
-    margin: 100px 20px;
+    display: flex;
+
+  }
+
+  .home, .about, .project, .services, .contact, .certs {
+
+    margin: 80px 15px 40px 15px;
 
   }
 
@@ -1405,7 +1633,7 @@ body {
 
   }
 
-  .projects-container, .services-container {
+  .projects-container, .services-container, .certs-container {
 
     grid-template-columns: 1fr;
 
@@ -1423,11 +1651,27 @@ body {
 
   }
 
+  .info-home h1 {
+
+    font-size: 32px;
+
+  }
+
+  .info-home h3 {
+
+    font-size: 24px;
+
+  }
+
   .btn-home1, .btn-home2, .btn, .btn-send {
 
     width: 100%;
 
     text-align: center;
+
+    padding: 12px 20px;
+
+    min-height: 44px;
 
   }
   
@@ -1449,17 +1693,49 @@ body {
 
   }
 
+  #back-to-top {
+
+    width: 45px;
+
+    height: 45px;
+
+    bottom: 20px;
+
+    right: 20px;
+
+    font-size: 18px;
+
+  }
+
+  .contact-form input,
+
+  .contact-form textarea {
+
+    font-size: 16px;
+
+    padding: 14px 15px;
+
+    min-height: 44px;
+
+  }
+
 }
 
 @media (max-width: 1024px) {
 
-  header {
+  .ul-list {
 
     display: none;
 
   }
 
-  .home, .about, .project, .services, .contact {
+  .mobile-menu-toggle {
+
+    display: flex;
+
+  }
+
+  .home, .about, .project, .services, .contact, .certs {
 
     margin: 20px auto;
 
@@ -1480,6 +1756,8 @@ body {
   .services-container,
 
   .projects-container,
+
+  .certs-container,
 
   .contact-content,
 
@@ -1527,7 +1805,9 @@ body {
 
   .project-card img,
 
-  .service-card img {
+  .service-card img,
+
+  .cert-image {
 
     width: 100%;
 
@@ -1543,17 +1823,17 @@ body {
 
   }
 
-  .info-home h1 { font-size: 26px; }
+  .info-home h1 { font-size: 36px; }
 
-  .info-home h3 { font-size: 18px; }
+  .info-home h3 { font-size: 22px; }
 
-  .info-p, .info-p2, .home-p, .about p, .project p, .service-card p, .contact p {
+  .info-p, .info-p2, .home-p, .about p, .project p, .service-card p, .contact p, .certs p {
 
     font-size: 14px;
 
   }
 
-  .project-card h3, .service-card h3 { font-size: 16px; }
+  .project-card h3, .service-card h3, .cert-card h3 { font-size: 18px; }
 
   .contact-content {
 
@@ -1704,6 +1984,62 @@ body {
     margin: 20px auto;
 
     padding: 0 15px;
+
+  }
+
+}
+
+/* Very small phones */
+
+@media (max-width: 480px) {
+
+  .home, .about, .project, .services, .contact, .certs {
+
+    margin: 70px 10px 30px 10px;
+
+  }
+
+  .info-home h1 {
+
+    font-size: 28px;
+
+  }
+
+  .info-home h3 {
+
+    font-size: 20px;
+
+  }
+
+  .mobile-menu-toggle {
+
+    width: 45px;
+
+    height: 45px;
+
+    top: 15px;
+
+    right: 15px;
+
+    font-size: 18px;
+
+  }
+
+  .mobile-menu {
+
+    width: 260px;
+
+  }
+
+  .projects-container, .services-container, .certs-container {
+
+    gap: 15px;
+
+  }
+
+  .project-card, .cert-card {
+
+    padding: 15px;
 
   }
 

@@ -1,5 +1,9 @@
 const navLinks = document.querySelectorAll('.ul-list li a');
+const mobileNavLinks = document.querySelectorAll('.mobile-menu-list li a');
 const sections = document.querySelectorAll('section');
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+const mobileMenuClose = document.querySelector('.mobile-menu-close');
 
 // Declare revealElements and backToTop BEFORE scroll event listener
 const revealElements = document.querySelectorAll('.home-container, .about-container, .projects-container, .certs-container, .contact-content');
@@ -33,20 +37,85 @@ backToTop.addEventListener('mouseout', () => backToTop.style.transform = 'scale(
 
 function removeActive() {
   navLinks.forEach(link => link.parentElement.classList.remove('active'));
+  mobileNavLinks.forEach(link => link.parentElement.classList.remove('active'));
+}
+
+function handleNavClick(link, isMobile = false) {
+  const targetId = link.getAttribute('href').substring(1);
+  const targetSection = document.getElementById(targetId);
+  window.scrollTo({
+    top: (targetSection ? targetSection.offsetTop : 0) - 80,
+    behavior: 'smooth'
+  });
+  removeActive();
+  link.parentElement.classList.add('active');
+  
+  // Update mobile menu active state
+  if (!isMobile) {
+    const mobileLink = document.querySelector(`.mobile-menu-list li a[href="#${targetId}"]`);
+    if (mobileLink) {
+      document.querySelectorAll('.mobile-menu-list li').forEach(li => li.classList.remove('active'));
+      mobileLink.parentElement.classList.add('active');
+    }
+  } else {
+    // Update desktop nav active state
+    const desktopLink = document.querySelector(`.ul-list li a[href="#${targetId}"]`);
+    if (desktopLink) {
+      document.querySelectorAll('.ul-list li').forEach(li => li.classList.remove('active'));
+      desktopLink.parentElement.classList.add('active');
+    }
+    // Close mobile menu
+    closeMobileMenu();
+  }
 }
 
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    const targetId = link.getAttribute('href').substring(1);
-    const targetSection = document.getElementById(targetId);
-    window.scrollTo({
-      top: (targetSection ? targetSection.offsetTop : 0) - 80,
-      behavior: 'smooth'
-    });
-    removeActive();
-    link.parentElement.classList.add('active');
+    handleNavClick(link, false);
   });
+});
+
+mobileNavLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    handleNavClick(link, true);
+  });
+});
+
+// Mobile menu toggle functionality
+function openMobileMenu() {
+  mobileMenuOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  mobileMenuOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+if (mobileMenuToggle) {
+  mobileMenuToggle.addEventListener('click', openMobileMenu);
+}
+
+if (mobileMenuClose) {
+  mobileMenuClose.addEventListener('click', closeMobileMenu);
+}
+
+// Close menu when clicking overlay
+if (mobileMenuOverlay) {
+  mobileMenuOverlay.addEventListener('click', (e) => {
+    if (e.target === mobileMenuOverlay) {
+      closeMobileMenu();
+    }
+  });
+}
+
+// Close menu on ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
+    closeMobileMenu();
+  }
 });
 
 window.addEventListener('scroll', () => {
@@ -56,6 +125,13 @@ window.addEventListener('scroll', () => {
       removeActive();
       const activeLink = document.querySelector(`.ul-list li a[href="#${section.id}"]`);
       if (activeLink) activeLink.parentElement.classList.add('active');
+      
+      // Update mobile menu active state
+      const mobileActiveLink = document.querySelector(`.mobile-menu-list li a[href="#${section.id}"]`);
+      if (mobileActiveLink) {
+        document.querySelectorAll('.mobile-menu-list li').forEach(li => li.classList.remove('active'));
+        mobileActiveLink.parentElement.classList.add('active');
+      }
     }
   });
   if(window.scrollY > 500){
@@ -116,6 +192,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (mainPage) {
     mainPage.classList.add("visible");
     mainPage.style.opacity = '1';
+  }
+  
+  // Set initial active state for mobile menu
+  const activeDesktopLink = document.querySelector('.ul-list li.active a');
+  if (activeDesktopLink) {
+    const targetId = activeDesktopLink.getAttribute('href');
+    const mobileActiveLink = document.querySelector(`.mobile-menu-list li a[href="${targetId}"]`);
+    if (mobileActiveLink) {
+      mobileActiveLink.parentElement.classList.add('active');
+    }
   }
   
   if (contactForm) {
