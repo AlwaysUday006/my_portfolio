@@ -7,14 +7,14 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"> -->
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="icon-512x512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wght@300..800&family=Playfair+Display:wght@400..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/J6MD3Gzv1bV0NfQ8WfGZ7GJ4X0J4l9hK8G7G7Zp1Y0CwQFZ9QW8p1p9QxJpZq+Q2CkL4QYZ0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -299,16 +299,18 @@
           </div>
         </div>
         <div class="contact-form slide-in-right">
-          <form id="contact-form">
+          <form id="contact-form" action="https://formspree.io/f/xojaegno" method="POST">
             <div class="form-group">
-              <input type="text" placeholder="Your Name" required name="user_name">
+              <input type="text" placeholder="Your Name" required name="name">
             </div>
             <div class="form-group">
-              <input type="email" placeholder="Your Email" required name="user_email">
+              <input type="email" placeholder="Your Email" required name="email">
             </div>
             <div class="form-group">
               <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
             </div>
+            <input type="hidden" name="_replyto" value="udaydeore006@gmail.com">
+            <input type="hidden" name="_subject" value="Portfolio Contact Form Submission">
             <button type="submit" class="btn-send"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
           </form>
         </div>
