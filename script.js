@@ -184,6 +184,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainPage = document.getElementById("main-page");
   const loadingScreen = document.getElementById("loading-screen");
   const contactForm = document.getElementById("contact-form");
+
+  // Theme Toggle Logic
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+  const htmlElement = document.documentElement;
+
+  // Check for saved user preference, if any, on load of the website
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  if (currentTheme) {
+      htmlElement.setAttribute('data-theme', currentTheme);
+      updateThemeIcon(currentTheme);
+  }
+
+  function updateThemeIcon(theme) {
+      const iconClass = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+      if (themeToggleBtn) themeToggleBtn.querySelector('i').className = `fa-solid ${iconClass}`;
+      if (mobileThemeToggleBtn) mobileThemeToggleBtn.querySelector('i').className = `fa-solid ${iconClass}`;
+  }
+
+  function switchTheme() {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+  }
+
+  if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', switchTheme);
+  }
+
+  if (mobileThemeToggleBtn) {
+      mobileThemeToggleBtn.addEventListener('click', switchTheme);
+  }
   
   // Hide loading screen immediately and show main page
   if (loadingScreen) {
