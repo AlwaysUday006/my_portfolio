@@ -173,7 +173,7 @@ export default function Contact() {
                   href="https://github.com/AlwaysUday006"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 hover:border-white/30 text-xs text-slate-350 hover:text-white font-medium bg-white/5 hover:bg-white/10 transition-all duration-350"
+                  className="flex items-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 hover:border-white/30 text-xs text-slate-300 hover:text-white font-medium bg-white/5 hover:bg-white/10 transition-all duration-350"
                 >
                   <Github className="w-4 h-4" />
                   GitHub
@@ -182,7 +182,7 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/uday-deore-5949bb32a"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 hover:border-white/30 text-xs text-slate-355 hover:text-white font-medium bg-white/5 hover:bg-white/10 transition-all duration-355"
+                  className="flex items-center gap-2 py-2.5 px-4 rounded-xl border border-white/10 hover:border-white/30 text-xs text-slate-300 hover:text-white font-medium bg-white/5 hover:bg-white/10 transition-all duration-355"
                 >
                   <Linkedin className="w-4 h-4" />
                   LinkedIn

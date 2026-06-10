@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, FolderKanban, MapPin, Briefcase } from 'lucide-react';
 import { Github, Linkedin } from './BrandIcons';
+import heroImg from '../assets/hero.png';
 
 const words = ["Python Developer", "AI Project Builder", "Algorithm Enthusiast", "B.Tech Student"];
 
@@ -104,6 +105,10 @@ export default function Hero() {
                 alt="Uday Deore"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="eager"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = heroImg;
+                }}
               />
               {/* Overlay shadow layer */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#07070a] via-transparent to-transparent opacity-60" />

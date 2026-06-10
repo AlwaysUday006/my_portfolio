@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { User, Terminal, GraduationCap, FolderCode, Target } from 'lucide-react';
+import heroImg from '../assets/hero.png';
 
 interface CardItem {
   icon: React.ReactNode;
@@ -67,10 +68,10 @@ export default function About() {
             variants={scrollRevealVariants}
             className="lg:col-span-7 space-y-6 text-left"
           >
-            <p className="text-base md:text-lg text-slate-350 leading-relaxed font-normal">
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed font-normal">
               I'm <strong className="text-white font-semibold">Uday Deore</strong>, a B.Tech Computer Science student currently in my second year. I have a strong interest in Python programming and AI-driven workflows. I enjoy learning by doing—building practical utilities like cryptographic tools, expense trackers, and interactive algorithm visualizers.
             </p>
-            <p className="text-base md:text-lg text-slate-450 leading-relaxed font-light">
+            <p className="text-base md:text-lg text-slate-400 leading-relaxed font-light">
               My core objective is to master Python ecosystem capabilities, exploring data science, machine learning algorithms, and system automation. I believe in continuous optimization, open-source principles, and showcasing projects to exchange knowledge with the developer community.
             </p>
 
@@ -122,6 +123,10 @@ export default function About() {
                   alt="Uday Deore working"
                   className="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = heroImg;
+                  }}
                 />
                 <div className="absolute inset-0 bg-cyan-950/10 mix-blend-overlay pointer-events-none group-hover:opacity-0 transition-opacity duration-500" />
               </div>

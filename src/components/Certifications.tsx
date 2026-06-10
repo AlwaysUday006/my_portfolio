@@ -143,7 +143,7 @@ export default function Certifications() {
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-2.5 px-4 rounded-xl text-xs text-slate-350 hover:text-white border border-white/10 hover:border-white/30 flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 transition-all duration-300 w-full font-medium"
+                  className="py-2.5 px-4 rounded-xl text-xs text-slate-300 hover:text-white border border-white/10 hover:border-white/30 flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 transition-all duration-300 w-full font-medium"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   Verify Credential
